@@ -7,6 +7,4 @@ public interface ProvinceDao {
 
     List<Province> getProvinceList() throws SQLException;
 
-    Province getProvince(long id) throws SQLException;
-
 }

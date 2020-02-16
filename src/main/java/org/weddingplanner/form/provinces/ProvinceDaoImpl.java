@@ -28,13 +28,4 @@ public class ProvinceDaoImpl implements ProvinceDao {
         return provinces;
     }
 
-    @Override
-    public Province getProvince(long id) throws SQLException {
-        Connection connection = DaoUtils.INSTANCE.getConnection();
-        PreparedStatement statement = connection.prepareStatement(GET_PROVINCE_QUERY);
-        statement.setLong(1, id);
-        ResultSet resultSet = statement.executeQuery();
-        Province province = getConvertedProvinces(resultSet).get(0);
-        return province;
-    }
 }
