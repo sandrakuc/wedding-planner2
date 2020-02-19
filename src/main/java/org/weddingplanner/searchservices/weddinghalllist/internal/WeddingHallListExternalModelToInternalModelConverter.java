@@ -1,8 +1,13 @@
 package org.weddingplanner.searchservices.weddinghalllist.internal;
 
+import org.weddingplanner.form.model.InputDataForm;
 import org.weddingplanner.searchservices.weddinghalllist.external.WeddingHallListResultsResponse;
+import org.weddingplanner.searchservices.weddingvenuegeolocation.WeddingVenueGeolocationApiHandler;
 import org.weddingplanner.searchservices.weddingvenuegeolocation.internal.WeddingVenueGeolocationExternalToInternalModelConverter;
+import org.weddingplanner.searchservices.weddingvenuegeolocation.internal.WeddingVenueGeolocationInternalModel;
+import org.weddingplanner.searchservices.weddingvenueweddinghalldistance.WeddingVenueWeddingHallDistanceApiHandler;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -25,7 +30,8 @@ public class WeddingHallListExternalModelToInternalModelConverter {
         return randomMultiplicand * 10;
     }
 
-    public static WeddingHallListInternalModel convert(WeddingHallListResultsResponse externalModel){
+    public static WeddingHallListInternalModel convert(WeddingHallListResultsResponse externalModel, WeddingVenueGeolocationInternalModel geolocationInternalModel) throws IOException {
+        WeddingVenueWeddingHallDistanceApiHandler apiHandler = new WeddingVenueWeddingHallDistanceApiHandler();
         WeddingHallListInternalModel weddingHallListInternalModel = new WeddingHallListInternalModel()
                 .builder()
                 .name(externalModel.getName())
@@ -35,14 +41,17 @@ public class WeddingHallListExternalModelToInternalModelConverter {
                 .longitude(String.valueOf(externalModel.getGeometry().getLocation().getLng()))
                 .price(getPrice())
                 .maxGuestsQuantity(getMaxGuestsQuantity())
+                .distanceFromWeddingVenue(apiHandler.getDistance(geolocationInternalModel.getLatitude(), geolocationInternalModel.getLongitude(), String.valueOf(externalModel.getGeometry().getLocation().getLat()), String.valueOf(externalModel.getGeometry().getLocation().getLng())))
                 .build();
         return weddingHallListInternalModel;
     }
 
-    public static List<WeddingHallListInternalModel> convertList(WeddingHallListResultsResponse[] externalModels){
+    public static List<WeddingHallListInternalModel> convertList(WeddingHallListResultsResponse[] externalModels, InputDataForm form) throws IOException {
+        WeddingVenueGeolocationApiHandler apiHandler = new WeddingVenueGeolocationApiHandler();
+        WeddingVenueGeolocationInternalModel internalModel = apiHandler.getWeddingVenueGeolocation(form);
         List<WeddingHallListInternalModel> internalModels = new ArrayList<>();
         for(WeddingHallListResultsResponse externalModel : externalModels){
-            internalModels.add(convert(externalModel));
+            internalModels.add(convert(externalModel, internalModel));
         }
         return internalModels;
     }

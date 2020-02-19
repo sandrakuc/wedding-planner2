@@ -1,6 +1,7 @@
 package org.weddingplanner.searchservices.weddinghalllist;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.weddingplanner.form.model.InputDataForm;
 import org.weddingplanner.searchservices.weddinghalllist.external.WeddingHallListExternalModel;
 import org.weddingplanner.searchservices.weddinghalllist.external.WeddingHallListResultsResponse;
 import org.weddingplanner.searchservices.weddinghalllist.internal.WeddingHallListExternalModelToInternalModelConverter;
@@ -37,9 +38,9 @@ public class WeddingHallListApiHandler {
         return response.getResults();
     }
 
-    public List<WeddingHallListInternalModel> getWeddingHallList(String provinceName) throws IOException {
-        WeddingHallListResultsResponse[] externalModels = sendRequest(provinceName);
-        List<WeddingHallListInternalModel> internalModels = WeddingHallListExternalModelToInternalModelConverter.convertList(externalModels);
+    public List<WeddingHallListInternalModel> getWeddingHallList(InputDataForm form) throws IOException {
+        WeddingHallListResultsResponse[] externalModels = sendRequest(form.getWeddingVenueProvince());
+        List<WeddingHallListInternalModel> internalModels = WeddingHallListExternalModelToInternalModelConverter.convertList(externalModels, form);
         return internalModels;
     }
 }
