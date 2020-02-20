@@ -15,13 +15,13 @@ import java.net.URL;
 import java.util.List;
 
 public class WeddingHallListApiHandler {
-    private String getEndpoint(String provinceName) throws IOException {
-        String endpoint = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=sale+weselne+" + provinceName + "&key=" + WeddingHallListUtils.getApiKey();
+    private String getEndpoint(String cityName) throws IOException {
+        String endpoint = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=sale+weselne+" + cityName + "&key=" + WeddingHallListUtils.getApiKey();
         return endpoint;
     }
 
-    private WeddingHallListResultsResponse[] sendRequest(String provinceName) throws IOException {
-        URL url = new URL(getEndpoint(provinceName));
+    private WeddingHallListResultsResponse[] sendRequest(String cityName) throws IOException {
+        URL url = new URL(getEndpoint(cityName));
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
         StringBuilder content;
@@ -39,7 +39,7 @@ public class WeddingHallListApiHandler {
     }
 
     public List<WeddingHallListInternalModel> getWeddingHallList(InputDataForm form) throws IOException {
-        WeddingHallListResultsResponse[] externalModels = sendRequest(form.getWeddingVenueProvince());
+        WeddingHallListResultsResponse[] externalModels = sendRequest(form.getWeddingVenueCity());
         List<WeddingHallListInternalModel> internalModels = WeddingHallListExternalModelToInternalModelConverter.convertList(externalModels, form);
         return internalModels;
     }

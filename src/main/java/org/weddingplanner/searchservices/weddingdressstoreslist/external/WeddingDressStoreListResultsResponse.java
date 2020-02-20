@@ -1,4 +1,4 @@
-package org.weddingplanner.searchservices.weddinghalllist.external;
+package org.weddingplanner.searchservices.weddingdressstoreslist.external;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,11 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class WeddingHallListResultsResponse {
-
+public class WeddingDressStoreListResultsResponse {
     public String formatted_address;
 
-    public WeddingHallListGeometryResponseList geometry;
+    public WeddingDressStoreListGeometryResponse geometry;
 
     public String icon;
 
@@ -21,11 +20,11 @@ public class WeddingHallListResultsResponse {
 
     public String name;
 
-    public WeddingHallListPhotoResponse[] photos;
+    public WeddingDressStoreListPhotoResponse[] photos;
 
-    public WeddingHallListPlusCodeResponse plus_code;
+    public WeddingDressStoreListPlusCodeResponse plus_code;
 
-    public WeddingHallListOpeningHoursResponse opening_hours;
+    public WeddingDressStoreListOpeningHoursResponse opening_hours;
 
     public String place_id;
 
@@ -36,6 +35,4 @@ public class WeddingHallListResultsResponse {
     public String[] types;
 
     public int user_ratings_total;
-
-    public int price_level;
 }

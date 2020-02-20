@@ -18,13 +18,13 @@ public class WeddingHallListExternalModelToInternalModelConverter {
         throw new Exception(String.format("Sorry, there is no %s instance for you!", this.getClass()));
     }
 
-    private static int getPrice(){
+    private static int getPrice(){ // todo get from new base
         Random rd = new Random();
         int randomMultiplicand = rd.nextInt(21) + 10;
         return randomMultiplicand * 10;
     }
 
-    private static int getMaxGuestsQuantity(){
+    private static int getMaxGuestsQuantity(){ // todo get from new base
         Random rd = new Random();
         int randomMultiplicand = rd.nextInt(23) + 8;
         return randomMultiplicand * 10;
