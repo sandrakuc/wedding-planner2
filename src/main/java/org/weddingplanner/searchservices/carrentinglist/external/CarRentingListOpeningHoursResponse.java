@@ -1,4 +1,4 @@
-package org.weddingplanner.form.model;
+package org.weddingplanner.searchservices.carrentinglist.external;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ChildrenPlayServicesCriteria {
-
-    private int noteCriteria;
-
-    private int priceCriteria;
+public class CarRentingListOpeningHoursResponse {
+    public boolean open_now;
 }

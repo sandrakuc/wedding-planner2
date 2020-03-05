@@ -13,8 +13,6 @@ import java.util.Date;
 @NoArgsConstructor
 public class InputDataForm {
 
-    private Date weddingDate;
-
     private int guestQuantity;
 
     private long budget;
@@ -41,8 +39,6 @@ public class InputDataForm {
 
     private String groomLivingProvince;
 
-    private Boolean needChildrenPlayAnimator;
-
     private Boolean needCarRenting;
 
     private WeddingHallCriteria weddingHallCriteria;
@@ -59,5 +55,4 @@ public class InputDataForm {
 
     private CarRentingServicesCriteria carRentingServicesCriteria;
 
-    private ChildrenPlayServicesCriteria childrenPlayServicesCriteria;
 }
