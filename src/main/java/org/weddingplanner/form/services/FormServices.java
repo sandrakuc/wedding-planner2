@@ -13,6 +13,8 @@ import org.weddingplanner.form.provinces.Province;
 import org.weddingplanner.form.provinces.ProvinceDao;
 import org.weddingplanner.form.provinces.model.ProvinceEntityToProvinceModelConverter;
 import org.weddingplanner.form.provinces.model.ProvinceModel;
+import org.weddingplanner.form.weddingservicesfilter.WeddingServicesFilter;
+import org.weddingplanner.form.weddingservicesfilter.WeddingServicesWrapper;
 import org.weddingplanner.form.weddingvenues.Church;
 import org.weddingplanner.form.weddingvenues.ChurchDao;
 import org.weddingplanner.form.weddingvenues.RegistryOffice;
@@ -21,6 +23,7 @@ import org.weddingplanner.form.weddingvenues.model.ChurchEntityToWeddingVenueMod
 import org.weddingplanner.form.weddingvenues.model.RegistryOfficeEntityToWeddingVenueModelConverter;
 import org.weddingplanner.form.weddingvenues.model.WeddingVenueModel;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -91,9 +94,9 @@ public class FormServices {
         return weddingVenueModels;
     }
 
-    @PostMapping(path = "/get-results", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void getResults(@RequestBody InputDataForm inputDataForm){
-        System.out.println("Tu na razie jest ściernisko, ale będzie San Francisco!");
-        System.out.println(inputDataForm.toString());
+    @PostMapping(path = "/get-results", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public WeddingServicesWrapper getResults(@RequestBody InputDataForm inputDataForm) throws IOException {
+        WeddingServicesWrapper wrapper = WeddingServicesFilter.buildServicesWrapper(inputDataForm);
+        return wrapper;
     }
 }
