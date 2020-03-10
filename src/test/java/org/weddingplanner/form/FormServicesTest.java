@@ -12,7 +12,16 @@ import org.weddingplanner.form.provinces.model.ProvinceModel;
 import org.weddingplanner.form.weddingservicesfilter.WeddingServicesFilter;
 import org.weddingplanner.form.weddingservicesfilter.WeddingServicesWrapper;
 import org.weddingplanner.form.weddingvenues.model.WeddingVenueModel;
+import org.weddingplanner.searchservices.beautysalonlist.internal.BeautySalonListInternalModel;
+import org.weddingplanner.searchservices.carrentinglist.internal.CarRentingListInternalModel;
+import org.weddingplanner.searchservices.floristicservices.internal.FloristicServicesListInternalModel;
+import org.weddingplanner.searchservices.hairdresserlist.internal.HairDresserListInternalModel;
+import org.weddingplanner.searchservices.makeupsalonlist.internal.MakeUpSalonListInternalModel;
+import org.weddingplanner.searchservices.musicbandlist.internal.MusicBandListInternalModel;
+import org.weddingplanner.searchservices.photographerlist.internal.PhotographerListInternalModel;
+import org.weddingplanner.searchservices.weddingdressstoreslist.internal.WeddingDressStoreListInternalModel;
 import org.weddingplanner.searchservices.weddinghalllist.internal.WeddingHallListInternalModel;
+import org.weddingplanner.searchservices.weddingsuiteslist.internal.WeddingSuitesListInternalModel;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -108,8 +117,47 @@ public class FormServicesTest extends AbstractTest{
         assertTrue(wrapper.getWeddingDressStores().size() > 0);
         assertTrue(wrapper.getWeddingSuitesStores().size() > 0);
         assertTrue(wrapper.getWeddingHalls().size() > 0);
+        for(BeautySalonListInternalModel beautySalon : wrapper.getBeautySalons()){
+            assertTrue(beautySalon.getPriceClassification() != null);
+            assertTrue(beautySalon.getSatisfactionClassification() != null);
+        }
+        for(CarRentingListInternalModel carRenting : wrapper.getCarRentings()){
+            assertTrue(carRenting.getPriceClassification() != null);
+            assertTrue(carRenting.getSatisfactionClassification() != null);
+        }
+        for(FloristicServicesListInternalModel floristicService : wrapper.getFloristicServices()){
+            assertTrue(floristicService.getPriceClassification() != null);
+            assertTrue(floristicService.getSatisfactionClassification() != null);
+        }
+        for(HairDresserListInternalModel hairDresser : wrapper.getHairDressers()){
+            assertTrue(hairDresser.getPriceClassification() != null);
+            assertTrue(hairDresser.getSatisfactionClassification() != null);
+        }
+        for(MakeUpSalonListInternalModel salon : wrapper.getMakeUpSalons()){
+            assertTrue(salon.getPriceClassification() != null);
+            assertTrue(salon.getSatisfactionClassification() != null);
+        }
+        for(MusicBandListInternalModel band : wrapper.getMusicBands()){
+            assertTrue(band.getPriceClassification() != null);
+            assertTrue(band.getSatisfactionClassification() != null);
+        }
+        for(PhotographerListInternalModel photographer : wrapper.getPhotographers()){
+            assertTrue(photographer.getPriceClassification() != null);
+            assertTrue(photographer.getSatisfactionClassification() != null);
+        }
+        for(WeddingDressStoreListInternalModel store : wrapper.getWeddingDressStores()){
+            assertTrue(store.getPriceClassification() != null);
+            assertTrue(store.getSatisfactionClassification() != null);
+        }
+        for(WeddingSuitesListInternalModel store : wrapper.getWeddingSuitesStores()){
+            assertTrue(store.getPriceClassification() != null);
+            assertTrue(store.getSatisfactionClassification() != null);
+        }
         for(WeddingHallListInternalModel hall : wrapper.getWeddingHalls()){
             assertTrue(hall.getMaxGuestsQuantity() >= form.getGuestQuantity());
+            assertTrue(hall.getDistanceClassification() != null);
+            assertTrue(hall.getPriceClassification() != null);
+            assertTrue(hall.getSatisfactionClassification() != null);
         }
     }
 }

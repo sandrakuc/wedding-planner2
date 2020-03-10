@@ -32,54 +32,63 @@ public class WeddingServicesFilter {
     private static List<BeautySalonListInternalModel> getBeautySalons(InputDataForm form) throws IOException {
         BeautySalonListApiHandler handler = new BeautySalonListApiHandler();
         List<BeautySalonListInternalModel> beautySalons = handler.getBeautySalonList(form);
+        beautySalons = WeddingServicesClassificator.classifyBeautySalons(beautySalons);
         return beautySalons;
     }
 
     private static List<CarRentingListInternalModel> getCarRentings(InputDataForm form) throws IOException {
         CarRentingListApiHandler handler = new CarRentingListApiHandler();
         List<CarRentingListInternalModel> carRentings = handler.getCarRentingList(form);
+        carRentings = WeddingServicesClassificator.classifyCarRentings(carRentings);
         return carRentings;
     }
 
     private static List<FloristicServicesListInternalModel> getFloristicServices(InputDataForm form) throws IOException {
         FloristicServicesListApiHandler handler = new FloristicServicesListApiHandler();
         List<FloristicServicesListInternalModel> floristicServices = handler.getFloristicServicesList(form);
+        floristicServices = WeddingServicesClassificator.classifyFloristicServices(floristicServices);
         return floristicServices;
     }
 
     private static List<HairDresserListInternalModel> getHairDressers(InputDataForm form) throws IOException {
         HairDresserListApiHandler handler = new HairDresserListApiHandler();
         List<HairDresserListInternalModel> hairDressers = handler.getHairDresserList(form);
+        hairDressers = WeddingServicesClassificator.classifyHairDressers(hairDressers);
         return hairDressers;
     }
 
     private static List<MakeUpSalonListInternalModel> getMakeUpSalons(InputDataForm form) throws IOException {
         MakeUpSalonListApiHandler handler = new MakeUpSalonListApiHandler();
         List<MakeUpSalonListInternalModel> makeUpSalons = handler.getMakeUpSalonList(form);
+        makeUpSalons = WeddingServicesClassificator.classifyMakeUpSalons(makeUpSalons);
         return makeUpSalons;
     }
 
     private static List<MusicBandListInternalModel> getMusicBands(InputDataForm form) throws IOException {
         MusicBandListApiHandler handler = new MusicBandListApiHandler();
         List<MusicBandListInternalModel> musicBands = handler.getMusicBandList(form);
+        musicBands = WeddingServicesClassificator.classifyMusicBands(musicBands);
         return musicBands;
     }
 
     private static List<PhotographerListInternalModel> getPhotographers(InputDataForm form) throws IOException {
         PhotographerListApiHandler handler = new PhotographerListApiHandler();
         List<PhotographerListInternalModel> photographers = handler.getPhotographerList(form);
+        photographers = WeddingServicesClassificator.classifyPhotographers(photographers);
         return photographers;
     }
 
     private static List<WeddingDressStoreListInternalModel> getWeddingDressStores(InputDataForm form) throws IOException {
         WeddingDressStoreListApiHandler handler = new WeddingDressStoreListApiHandler();
         List<WeddingDressStoreListInternalModel> weddingDressStores = handler.getWeddingDressStoresList(form);
+        weddingDressStores = WeddingServicesClassificator.classifyWeddingDressStores(weddingDressStores);
         return weddingDressStores;
     }
 
     private static List<WeddingSuitesListInternalModel> getWeddingSuitesStores(InputDataForm form) throws IOException {
         WeddingSuitesListApiHandler handler = new WeddingSuitesListApiHandler();
         List<WeddingSuitesListInternalModel> weddingSuitesStores = handler.getWeddingSuitesList(form);
+        weddingSuitesStores = WeddingServicesClassificator.classifyWeddingSuitesStores(weddingSuitesStores);
         return weddingSuitesStores;
     }
 
@@ -87,6 +96,7 @@ public class WeddingServicesFilter {
         WeddingHallListApiHandler handler = new WeddingHallListApiHandler();
         List<WeddingHallListInternalModel> weddingHalls = handler.getWeddingHallList(form);
         weddingHalls = weddingHalls.stream().filter(weddingHall -> weddingHall.getMaxGuestsQuantity() >= form.getGuestQuantity()).collect(Collectors.toList());
+        weddingHalls = WeddingServicesClassificator.classifyWeddingHalls(weddingHalls);
         return weddingHalls;
     }
 
