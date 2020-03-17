@@ -16,13 +16,11 @@ public class CarRentingListExternalToInternalModelConverter {
     }
 
     public static CarRentingListInternalModel convert(CarRentingListResultsResponse externalModel){
-        CarRentingListInternalModel internalModel = new CarRentingListInternalModel()
-                .builder()
-                .name(externalModel.getName())
-                .address(externalModel.getFormatted_address())
-                .rating(externalModel.getRating())
-                .avgPrice(getPrice())
-                .build();
+        CarRentingListInternalModel internalModel = new CarRentingListInternalModel();
+        internalModel.setName(externalModel.getName());
+        internalModel.setAddress(externalModel.getFormatted_address());
+        internalModel.setAvgPrice(getPrice());
+        internalModel.setRating(externalModel.getRating());
         return internalModel;
     }
 

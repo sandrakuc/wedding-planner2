@@ -4,32 +4,61 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.weddingplanner.searchservices.DistanceClassification;
+import org.weddingplanner.searchservices.PriceClassification;
+import org.weddingplanner.searchservices.SatisfactionClassification;
+import org.weddingplanner.searchservices.ServiceInternalModel;
 
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class WeddingHallListInternalModel {
-
-    private String name;
-
-    private String address;
-
-    private double rating;
+public class WeddingHallListInternalModel extends ServiceInternalModel {
 
     private String latitude;
 
     private String longitude;
 
-    private int price;
-
     private int maxGuestsQuantity;
 
     private double distanceFromWeddingVenue;
 
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public int getMaxGuestsQuantity() {
+        return maxGuestsQuantity;
+    }
+
+    public void setMaxGuestsQuantity(int maxGuestsQuantity) {
+        this.maxGuestsQuantity = maxGuestsQuantity;
+    }
+
+    public double getDistanceFromWeddingVenue() {
+        return distanceFromWeddingVenue;
+    }
+
+    public void setDistanceFromWeddingVenue(double distanceFromWeddingVenue) {
+        this.distanceFromWeddingVenue = distanceFromWeddingVenue;
+    }
+
+    public DistanceClassification getDistanceClassification() {
+        return distanceClassification;
+    }
+
+    public void setDistanceClassification(DistanceClassification distanceClassification) {
+        this.distanceClassification = distanceClassification;
+    }
+
     private DistanceClassification distanceClassification;
 
-    private PriceClassification priceClassification;
-
-    private SatisfactionClassification satisfactionClassification;
 }

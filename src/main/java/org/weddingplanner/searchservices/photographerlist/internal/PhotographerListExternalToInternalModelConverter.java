@@ -16,13 +16,11 @@ public class PhotographerListExternalToInternalModelConverter {
     }
 
     public static PhotographerListInternalModel convert(PhotographerListResultsResponse externalModel){
-        PhotographerListInternalModel internalModel = new PhotographerListInternalModel()
-                .builder()
-                .name(externalModel.getName())
-                .address(externalModel.getFormatted_address())
-                .rating(externalModel.getRating())
-                .avgPrice(getPrice())
-                .build();
+        PhotographerListInternalModel internalModel = new PhotographerListInternalModel();
+        internalModel.setName(externalModel.getName());
+        internalModel.setAddress(externalModel.getFormatted_address());
+        internalModel.setAvgPrice(getPrice());
+        internalModel.setRating(externalModel.getRating());
         return internalModel;
     }
 

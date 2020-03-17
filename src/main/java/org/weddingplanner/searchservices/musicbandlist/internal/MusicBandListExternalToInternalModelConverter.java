@@ -16,13 +16,11 @@ public class MusicBandListExternalToInternalModelConverter {
     }
 
     public static MusicBandListInternalModel convert(MusicBandListResultsResponse externalModel){
-        MusicBandListInternalModel internalModel = new MusicBandListInternalModel()
-                .builder()
-                .name(externalModel.getName())
-                .address(externalModel.getFormatted_address())
-                .rating(externalModel.getRating())
-                .avgPrice(getPrice())
-                .build();
+        MusicBandListInternalModel internalModel = new MusicBandListInternalModel();
+        internalModel.setName(externalModel.getName());
+        internalModel.setAddress(externalModel.getFormatted_address());
+        internalModel.setAvgPrice(getPrice());
+        internalModel.setRating(externalModel.getRating());
         return internalModel;
     }
 

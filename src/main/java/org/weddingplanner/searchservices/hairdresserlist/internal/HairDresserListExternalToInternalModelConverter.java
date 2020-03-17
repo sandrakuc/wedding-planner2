@@ -16,13 +16,11 @@ public class HairDresserListExternalToInternalModelConverter {
     }
 
     public static HairDresserListInternalModel convert(HairDresserListResultsResponse externalModel){
-        HairDresserListInternalModel internalModel = new HairDresserListInternalModel()
-                .builder()
-                .name(externalModel.getName())
-                .address(externalModel.getFormatted_address())
-                .rating(externalModel.getRating())
-                .avgPrice(getPrice())
-                .build();
+        HairDresserListInternalModel internalModel = new HairDresserListInternalModel();
+        internalModel.setName(externalModel.getName());
+        internalModel.setAddress(externalModel.getFormatted_address());
+        internalModel.setAvgPrice(getPrice());
+        internalModel.setRating(externalModel.getRating());
         return internalModel;
     }
 

@@ -4,23 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.weddingplanner.searchservices.weddinghalllist.internal.PriceClassification;
-import org.weddingplanner.searchservices.weddinghalllist.internal.SatisfactionClassification;
+import org.weddingplanner.searchservices.PriceClassification;
+import org.weddingplanner.searchservices.SatisfactionClassification;
+import org.weddingplanner.searchservices.ServiceInternalModel;
 
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class CarRentingListInternalModel {
-    private String name;
+public class CarRentingListInternalModel extends ServiceInternalModel {
 
-    private String address;
-
-    private double rating;
-
-    private int avgPrice;
-
-    private PriceClassification priceClassification;
-
-    private SatisfactionClassification satisfactionClassification;
 }

@@ -8,9 +8,9 @@ import org.weddingplanner.searchservices.makeupsalonlist.internal.MakeUpSalonLis
 import org.weddingplanner.searchservices.musicbandlist.internal.MusicBandListInternalModel;
 import org.weddingplanner.searchservices.photographerlist.internal.PhotographerListInternalModel;
 import org.weddingplanner.searchservices.weddingdressstoreslist.internal.WeddingDressStoreListInternalModel;
-import org.weddingplanner.searchservices.weddinghalllist.internal.DistanceClassification;
-import org.weddingplanner.searchservices.weddinghalllist.internal.PriceClassification;
-import org.weddingplanner.searchservices.weddinghalllist.internal.SatisfactionClassification;
+import org.weddingplanner.searchservices.DistanceClassification;
+import org.weddingplanner.searchservices.PriceClassification;
+import org.weddingplanner.searchservices.SatisfactionClassification;
 import org.weddingplanner.searchservices.weddinghalllist.internal.WeddingHallListInternalModel;
 import org.weddingplanner.searchservices.weddingsuiteslist.internal.WeddingSuitesListInternalModel;
 
@@ -136,14 +136,14 @@ public class WeddingServicesClassificator {
     }
 
     public static List<WeddingHallListInternalModel> classifyWeddingHalls(List<WeddingHallListInternalModel> weddingHalls){
-        List<Double> pricesValues = weddingHalls.stream().map(price -> Double.valueOf(price.getPrice())).collect(Collectors.toList());
+        List<Double> pricesValues = weddingHalls.stream().map(price -> Double.valueOf(price.getAvgPrice())).collect(Collectors.toList());
         double priceMedian = countMedian(pricesValues);
         List<Double> satisfactionValues = weddingHalls.stream().map(satisfaction -> satisfaction.getRating()).collect(Collectors.toList());
         double satisfactionMedian = countMedian(satisfactionValues);
         List<Double> distanceValues = weddingHalls.stream().map(distance -> distance.getDistanceFromWeddingVenue()).collect(Collectors.toList());
         double distanceMedian = countMedian(distanceValues);
         for(WeddingHallListInternalModel weddingHall : weddingHalls){
-            weddingHall.setPriceClassification(weddingHall.getPrice() < priceMedian ? PriceClassification.CHEAP : PriceClassification.EXPENSIVE);
+            weddingHall.setPriceClassification(weddingHall.getAvgPrice() < priceMedian ? PriceClassification.CHEAP : PriceClassification.EXPENSIVE);
             weddingHall.setSatisfactionClassification(weddingHall.getRating() < satisfactionMedian ? SatisfactionClassification.BAD : SatisfactionClassification.GOOD);
             weddingHall.setDistanceClassification(weddingHall.getDistanceFromWeddingVenue() < distanceMedian ? DistanceClassification.NEAR : DistanceClassification.FAR);
         }

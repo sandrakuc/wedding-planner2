@@ -16,13 +16,11 @@ public class FloristicServicesListExternalToInternalModelConverter {
     }
 
     public static FloristicServicesListInternalModel convert(FloristicServicesListResultsResponse externalModel){
-        FloristicServicesListInternalModel internalModel = new FloristicServicesListInternalModel()
-                .builder()
-                .name(externalModel.getName())
-                .address(externalModel.getFormatted_address())
-                .rating(externalModel.getRating())
-                .avgPrice(getPrice())
-                .build();
+        FloristicServicesListInternalModel internalModel = new FloristicServicesListInternalModel();
+        internalModel.setName(externalModel.getName());
+        internalModel.setAddress(externalModel.getFormatted_address());
+        internalModel.setAvgPrice(getPrice());
+        internalModel.setRating(externalModel.getRating());
         return internalModel;
     }
 

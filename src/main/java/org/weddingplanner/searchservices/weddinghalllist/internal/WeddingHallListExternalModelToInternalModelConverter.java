@@ -32,17 +32,15 @@ public class WeddingHallListExternalModelToInternalModelConverter {
 
     public static WeddingHallListInternalModel convert(WeddingHallListResultsResponse externalModel, WeddingVenueGeolocationInternalModel geolocationInternalModel) throws IOException {
         WeddingVenueWeddingHallDistanceApiHandler apiHandler = new WeddingVenueWeddingHallDistanceApiHandler();
-        WeddingHallListInternalModel weddingHallListInternalModel = new WeddingHallListInternalModel()
-                .builder()
-                .name(externalModel.getName())
-                .address(externalModel.getFormatted_address())
-                .rating(externalModel.getRating())
-                .latitude(String.valueOf(externalModel.getGeometry().getLocation().getLat()))
-                .longitude(String.valueOf(externalModel.getGeometry().getLocation().getLng()))
-                .price(getPrice())
-                .maxGuestsQuantity(getMaxGuestsQuantity())
-                .distanceFromWeddingVenue(apiHandler.getDistance(geolocationInternalModel.getLatitude(), geolocationInternalModel.getLongitude(), String.valueOf(externalModel.getGeometry().getLocation().getLat()), String.valueOf(externalModel.getGeometry().getLocation().getLng())))
-                .build();
+        WeddingHallListInternalModel weddingHallListInternalModel = new WeddingHallListInternalModel();
+        weddingHallListInternalModel.setName(externalModel.getName());
+        weddingHallListInternalModel.setAddress(externalModel.getFormatted_address());
+        weddingHallListInternalModel.setRating(externalModel.getRating());
+        weddingHallListInternalModel.setLatitude(String.valueOf(externalModel.getGeometry().getLocation().getLat()));
+        weddingHallListInternalModel.setLongitude(String.valueOf(externalModel.getGeometry().getLocation().getLng()));
+        weddingHallListInternalModel.setAvgPrice(getPrice());
+        weddingHallListInternalModel.setMaxGuestsQuantity(getMaxGuestsQuantity());
+        weddingHallListInternalModel.setDistanceFromWeddingVenue(apiHandler.getDistance(geolocationInternalModel.getLatitude(), geolocationInternalModel.getLongitude(), String.valueOf(externalModel.getGeometry().getLocation().getLat()), String.valueOf(externalModel.getGeometry().getLocation().getLng())));
         return weddingHallListInternalModel;
     }
 

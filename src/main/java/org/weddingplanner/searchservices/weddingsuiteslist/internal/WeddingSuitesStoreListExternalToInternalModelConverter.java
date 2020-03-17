@@ -17,13 +17,11 @@ public class WeddingSuitesStoreListExternalToInternalModelConverter {
     }
 
     public static WeddingSuitesListInternalModel convert(WeddingSuitesListResultsResponse externalModel){
-        WeddingSuitesListInternalModel internalModel = new WeddingSuitesListInternalModel()
-                .builder()
-                .name(externalModel.getName())
-                .address(externalModel.getFormatted_address())
-                .rating(externalModel.getRating())
-                .avgPrice(getPrice())
-                .build();
+        WeddingSuitesListInternalModel internalModel = new WeddingSuitesListInternalModel();
+        internalModel.setName(externalModel.getName());
+        internalModel.setAddress(externalModel.getFormatted_address());
+        internalModel.setRating(externalModel.getRating());
+        internalModel.setAvgPrice(getPrice());
         return internalModel;
     }
 

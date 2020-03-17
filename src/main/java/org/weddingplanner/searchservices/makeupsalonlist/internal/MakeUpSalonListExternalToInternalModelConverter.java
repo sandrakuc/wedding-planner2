@@ -16,13 +16,11 @@ public class MakeUpSalonListExternalToInternalModelConverter {
     }
 
     public static MakeUpSalonListInternalModel convert(MakeUpSalonListResultsResponse externalModel){
-        MakeUpSalonListInternalModel internalModel = new MakeUpSalonListInternalModel()
-                .builder()
-                .name(externalModel.getName())
-                .address(externalModel.getFormatted_address())
-                .rating(externalModel.getRating())
-                .avgPrice(getPrice())
-                .build();
+        MakeUpSalonListInternalModel internalModel = new MakeUpSalonListInternalModel();
+        internalModel.setName(externalModel.getName());
+        internalModel.setAddress(externalModel.getFormatted_address());
+        internalModel.setAvgPrice(getPrice());
+        internalModel.setRating(externalModel.getRating());
         return internalModel;
     }
 
