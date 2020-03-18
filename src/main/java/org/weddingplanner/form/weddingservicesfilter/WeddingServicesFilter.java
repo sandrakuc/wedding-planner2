@@ -33,6 +33,8 @@ public class WeddingServicesFilter {
         BeautySalonListApiHandler handler = new BeautySalonListApiHandler();
         List<BeautySalonListInternalModel> beautySalons = handler.getBeautySalonList(form);
         beautySalons = WeddingServicesClassificator.classifyBeautySalons(beautySalons);
+        ServiceGrouping<BeautySalonListInternalModel> serviceGrouping = new ServiceGrouping<>();
+        beautySalons = serviceGrouping.groupServices(beautySalons);
         return beautySalons;
     }
 
@@ -40,6 +42,8 @@ public class WeddingServicesFilter {
         CarRentingListApiHandler handler = new CarRentingListApiHandler();
         List<CarRentingListInternalModel> carRentings = handler.getCarRentingList(form);
         carRentings = WeddingServicesClassificator.classifyCarRentings(carRentings);
+        ServiceGrouping<CarRentingListInternalModel> serviceGrouping = new ServiceGrouping<>();
+        carRentings = serviceGrouping.groupServices(carRentings);
         return carRentings;
     }
 
@@ -47,6 +51,8 @@ public class WeddingServicesFilter {
         FloristicServicesListApiHandler handler = new FloristicServicesListApiHandler();
         List<FloristicServicesListInternalModel> floristicServices = handler.getFloristicServicesList(form);
         floristicServices = WeddingServicesClassificator.classifyFloristicServices(floristicServices);
+        ServiceGrouping<FloristicServicesListInternalModel> serviceGrouping = new ServiceGrouping<>();
+        floristicServices = serviceGrouping.groupServices(floristicServices);
         return floristicServices;
     }
 
@@ -54,6 +60,8 @@ public class WeddingServicesFilter {
         HairDresserListApiHandler handler = new HairDresserListApiHandler();
         List<HairDresserListInternalModel> hairDressers = handler.getHairDresserList(form);
         hairDressers = WeddingServicesClassificator.classifyHairDressers(hairDressers);
+        ServiceGrouping<HairDresserListInternalModel> serviceGrouping = new ServiceGrouping<>();
+        hairDressers = serviceGrouping.groupServices(hairDressers);
         return hairDressers;
     }
 
@@ -61,6 +69,8 @@ public class WeddingServicesFilter {
         MakeUpSalonListApiHandler handler = new MakeUpSalonListApiHandler();
         List<MakeUpSalonListInternalModel> makeUpSalons = handler.getMakeUpSalonList(form);
         makeUpSalons = WeddingServicesClassificator.classifyMakeUpSalons(makeUpSalons);
+        ServiceGrouping<MakeUpSalonListInternalModel> serviceGrouping = new ServiceGrouping<>();
+        makeUpSalons = serviceGrouping.groupServices(makeUpSalons);
         return makeUpSalons;
     }
 
@@ -68,6 +78,8 @@ public class WeddingServicesFilter {
         MusicBandListApiHandler handler = new MusicBandListApiHandler();
         List<MusicBandListInternalModel> musicBands = handler.getMusicBandList(form);
         musicBands = WeddingServicesClassificator.classifyMusicBands(musicBands);
+        ServiceGrouping<MusicBandListInternalModel> serviceGrouping = new ServiceGrouping<>();
+        musicBands = serviceGrouping.groupServices(musicBands);
         return musicBands;
     }
 
@@ -75,6 +87,8 @@ public class WeddingServicesFilter {
         PhotographerListApiHandler handler = new PhotographerListApiHandler();
         List<PhotographerListInternalModel> photographers = handler.getPhotographerList(form);
         photographers = WeddingServicesClassificator.classifyPhotographers(photographers);
+        ServiceGrouping<PhotographerListInternalModel> serviceGrouping = new ServiceGrouping<>();
+        photographers = serviceGrouping.groupServices(photographers);
         return photographers;
     }
 
@@ -82,6 +96,8 @@ public class WeddingServicesFilter {
         WeddingDressStoreListApiHandler handler = new WeddingDressStoreListApiHandler();
         List<WeddingDressStoreListInternalModel> weddingDressStores = handler.getWeddingDressStoresList(form);
         weddingDressStores = WeddingServicesClassificator.classifyWeddingDressStores(weddingDressStores);
+        ServiceGrouping<WeddingDressStoreListInternalModel> serviceGrouping = new ServiceGrouping<>();
+        weddingDressStores = serviceGrouping.groupServices(weddingDressStores);
         return weddingDressStores;
     }
 
@@ -89,6 +105,8 @@ public class WeddingServicesFilter {
         WeddingSuitesListApiHandler handler = new WeddingSuitesListApiHandler();
         List<WeddingSuitesListInternalModel> weddingSuitesStores = handler.getWeddingSuitesList(form);
         weddingSuitesStores = WeddingServicesClassificator.classifyWeddingSuitesStores(weddingSuitesStores);
+        ServiceGrouping<WeddingSuitesListInternalModel> serviceGrouping = new ServiceGrouping<>();
+        weddingSuitesStores = serviceGrouping.groupServices(weddingSuitesStores);
         return weddingSuitesStores;
     }
 
@@ -97,6 +115,8 @@ public class WeddingServicesFilter {
         List<WeddingHallListInternalModel> weddingHalls = handler.getWeddingHallList(form);
         weddingHalls = weddingHalls.stream().filter(weddingHall -> weddingHall.getMaxGuestsQuantity() >= form.getGuestQuantity()).collect(Collectors.toList());
         weddingHalls = WeddingServicesClassificator.classifyWeddingHalls(weddingHalls);
+        ServiceGrouping<WeddingHallListInternalModel> serviceGrouping = new ServiceGrouping<>();
+        weddingHalls = serviceGrouping.groupWeddingHalls(weddingHalls);
         return weddingHalls;
     }
 
