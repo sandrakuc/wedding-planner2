@@ -34,7 +34,7 @@ public class WeddingServicesFilter {
         List<BeautySalonListInternalModel> beautySalons = handler.getBeautySalonList(form);
         beautySalons = WeddingServicesClassificator.classifyBeautySalons(beautySalons);
         ServiceGrouping<BeautySalonListInternalModel> serviceGrouping = new ServiceGrouping<>();
-        beautySalons = serviceGrouping.groupServices(beautySalons);
+        beautySalons = serviceGrouping.groupServices(beautySalons, form.getBeautyServicesCriteria().getPriceCriteria(), form.getBeautyServicesCriteria().getNoteCriteria());
         return beautySalons;
     }
 
@@ -43,7 +43,7 @@ public class WeddingServicesFilter {
         List<CarRentingListInternalModel> carRentings = handler.getCarRentingList(form);
         carRentings = WeddingServicesClassificator.classifyCarRentings(carRentings);
         ServiceGrouping<CarRentingListInternalModel> serviceGrouping = new ServiceGrouping<>();
-        carRentings = serviceGrouping.groupServices(carRentings);
+        carRentings = serviceGrouping.groupServices(carRentings, form.getCarRentingServicesCriteria().getPriceCriteria(), form.getCarRentingServicesCriteria().getNoteCriteria());
         return carRentings;
     }
 
@@ -52,7 +52,7 @@ public class WeddingServicesFilter {
         List<FloristicServicesListInternalModel> floristicServices = handler.getFloristicServicesList(form);
         floristicServices = WeddingServicesClassificator.classifyFloristicServices(floristicServices);
         ServiceGrouping<FloristicServicesListInternalModel> serviceGrouping = new ServiceGrouping<>();
-        floristicServices = serviceGrouping.groupServices(floristicServices);
+        floristicServices = serviceGrouping.groupServices(floristicServices, form.getFloristicServicesCriteria().getPriceCriteria(), form.getFloristicServicesCriteria().getNoteCriteria());
         return floristicServices;
     }
 
@@ -61,7 +61,7 @@ public class WeddingServicesFilter {
         List<HairDresserListInternalModel> hairDressers = handler.getHairDresserList(form);
         hairDressers = WeddingServicesClassificator.classifyHairDressers(hairDressers);
         ServiceGrouping<HairDresserListInternalModel> serviceGrouping = new ServiceGrouping<>();
-        hairDressers = serviceGrouping.groupServices(hairDressers);
+        hairDressers = serviceGrouping.groupServices(hairDressers, form.getBeautyServicesCriteria().getPriceCriteria(), form.getBeautyServicesCriteria().getNoteCriteria());
         return hairDressers;
     }
 
@@ -70,7 +70,7 @@ public class WeddingServicesFilter {
         List<MakeUpSalonListInternalModel> makeUpSalons = handler.getMakeUpSalonList(form);
         makeUpSalons = WeddingServicesClassificator.classifyMakeUpSalons(makeUpSalons);
         ServiceGrouping<MakeUpSalonListInternalModel> serviceGrouping = new ServiceGrouping<>();
-        makeUpSalons = serviceGrouping.groupServices(makeUpSalons);
+        makeUpSalons = serviceGrouping.groupServices(makeUpSalons, form.getBeautyServicesCriteria().getPriceCriteria(), form.getBeautyServicesCriteria().getNoteCriteria());
         return makeUpSalons;
     }
 
@@ -79,7 +79,7 @@ public class WeddingServicesFilter {
         List<MusicBandListInternalModel> musicBands = handler.getMusicBandList(form);
         musicBands = WeddingServicesClassificator.classifyMusicBands(musicBands);
         ServiceGrouping<MusicBandListInternalModel> serviceGrouping = new ServiceGrouping<>();
-        musicBands = serviceGrouping.groupServices(musicBands);
+        musicBands = serviceGrouping.groupServices(musicBands, form.getMusicBandCriteria().getPriceCriteria(), form.getMusicBandCriteria().getNoteCriteria());
         return musicBands;
     }
 
@@ -88,7 +88,7 @@ public class WeddingServicesFilter {
         List<PhotographerListInternalModel> photographers = handler.getPhotographerList(form);
         photographers = WeddingServicesClassificator.classifyPhotographers(photographers);
         ServiceGrouping<PhotographerListInternalModel> serviceGrouping = new ServiceGrouping<>();
-        photographers = serviceGrouping.groupServices(photographers);
+        photographers = serviceGrouping.groupServices(photographers, form.getPhotographicAndFilmServicesCriteria().getPriceCriteria(), form.getPhotographicAndFilmServicesCriteria().getNoteCriteria());
         return photographers;
     }
 
@@ -97,7 +97,7 @@ public class WeddingServicesFilter {
         List<WeddingDressStoreListInternalModel> weddingDressStores = handler.getWeddingDressStoresList(form);
         weddingDressStores = WeddingServicesClassificator.classifyWeddingDressStores(weddingDressStores);
         ServiceGrouping<WeddingDressStoreListInternalModel> serviceGrouping = new ServiceGrouping<>();
-        weddingDressStores = serviceGrouping.groupServices(weddingDressStores);
+        weddingDressStores = serviceGrouping.groupServices(weddingDressStores, form.getWeddingOutfitCriteria().getPriceCriteria(), form.getWeddingOutfitCriteria().getNoteCriteria());
         return weddingDressStores;
     }
 
@@ -106,7 +106,7 @@ public class WeddingServicesFilter {
         List<WeddingSuitesListInternalModel> weddingSuitesStores = handler.getWeddingSuitesList(form);
         weddingSuitesStores = WeddingServicesClassificator.classifyWeddingSuitesStores(weddingSuitesStores);
         ServiceGrouping<WeddingSuitesListInternalModel> serviceGrouping = new ServiceGrouping<>();
-        weddingSuitesStores = serviceGrouping.groupServices(weddingSuitesStores);
+        weddingSuitesStores = serviceGrouping.groupServices(weddingSuitesStores, form.getWeddingOutfitCriteria().getPriceCriteria(), form.getWeddingOutfitCriteria().getNoteCriteria());
         return weddingSuitesStores;
     }
 
@@ -116,7 +116,7 @@ public class WeddingServicesFilter {
         weddingHalls = weddingHalls.stream().filter(weddingHall -> weddingHall.getMaxGuestsQuantity() >= form.getGuestQuantity()).collect(Collectors.toList());
         weddingHalls = WeddingServicesClassificator.classifyWeddingHalls(weddingHalls);
         ServiceGrouping<WeddingHallListInternalModel> serviceGrouping = new ServiceGrouping<>();
-        weddingHalls = serviceGrouping.groupWeddingHalls(weddingHalls);
+        weddingHalls = serviceGrouping.groupWeddingHalls(weddingHalls, form.getWeddingHallCriteria().getPriceCriteria(), form.getWeddingHallCriteria().getNoteCriteria(), form.getWeddingHallCriteria().getDistanceCriteria());
         return weddingHalls;
     }
 

@@ -7,7 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.weddingplanner.form.cities.model.CityModel;
-import org.weddingplanner.form.model.InputDataForm;
+import org.weddingplanner.form.model.*;
 import org.weddingplanner.form.provinces.model.ProvinceModel;
 import org.weddingplanner.form.weddingservicesfilter.WeddingServicesFilter;
 import org.weddingplanner.form.weddingservicesfilter.WeddingServicesWrapper;
@@ -79,6 +79,42 @@ public class FormServicesTest extends AbstractTest{
 
     @Test
     public void getResults() throws Exception {
+        BeautyServicesCriteria beautyServicesCriteria = new BeautyServicesCriteria()
+                .builder()
+                .priceCriteria(7)
+                .noteCriteria(8)
+                .build();
+        CarRentingServicesCriteria carRentingServicesCriteria = new CarRentingServicesCriteria()
+                .builder()
+                .priceCriteria(10)
+                .noteCriteria(2)
+                .build();
+        FloristicServicesCriteria floristicServicesCriteria = new FloristicServicesCriteria()
+                .builder()
+                .priceCriteria(5)
+                .noteCriteria(5)
+                .build();
+        MusicBandCriteria musicBandCriteria = new MusicBandCriteria()
+                .builder()
+                .priceCriteria(3)
+                .noteCriteria(10)
+                .build();
+        PhotographicAndFilmServicesCriteria photographicAndFilmServicesCriteria = new PhotographicAndFilmServicesCriteria()
+                .builder()
+                .priceCriteria(5)
+                .noteCriteria(9)
+                .build();
+        WeddingOutfitCriteria weddingOutfitCriteria = new WeddingOutfitCriteria()
+                .builder()
+                .priceCriteria(10)
+                .noteCriteria(6)
+                .build();
+        WeddingHallCriteria weddingHallCriteria = new WeddingHallCriteria()
+                .builder()
+                .priceCriteria(7)
+                .distanceCriteria(10)
+                .noteCriteria(9)
+                .build();
         InputDataForm form = new InputDataForm()
                 .builder()
                 .weddingVenueName("Parafia Wniebowzięcia Najświętszej Maryi Panny")
@@ -94,6 +130,13 @@ public class FormServicesTest extends AbstractTest{
                 .budget(60000)
                 .budgetMargin(10000)
                 .guestQuantity(200)
+                .beautyServicesCriteria(beautyServicesCriteria)
+                .carRentingServicesCriteria(carRentingServicesCriteria)
+                .floristicServicesCriteria(floristicServicesCriteria)
+                .musicBandCriteria(musicBandCriteria)
+                .photographicAndFilmServicesCriteria(photographicAndFilmServicesCriteria)
+                .weddingOutfitCriteria(weddingOutfitCriteria)
+                .weddingHallCriteria(weddingHallCriteria)
                 .build();
 
         ObjectMapper mapper = new ObjectMapper();

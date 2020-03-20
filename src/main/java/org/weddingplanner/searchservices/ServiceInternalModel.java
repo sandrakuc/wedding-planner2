@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ServiceInternalModel {
+public class ServiceInternalModel implements Comparable<ServiceInternalModel>{
 
     public String name;
 
@@ -22,4 +22,11 @@ public class ServiceInternalModel {
     public PriceClassification priceClassification;
 
     public SatisfactionClassification satisfactionClassification;
+
+    public int points;
+
+    @Override
+    public int compareTo(ServiceInternalModel o) {
+        return Integer.compare(this.getPoints(), o.getPoints());
+    }
 }
