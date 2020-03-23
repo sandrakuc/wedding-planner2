@@ -21,7 +21,7 @@ import java.util.List;
 
 public class CarRentingListApiHandler {
     public String getEndpoint(String provinceName) throws IOException {
-        String endpoint = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=makijaż+" + provinceName + "&key=" + CarRentingListUtils.getApiKey();
+        String endpoint = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=wynajem+samochodów+" + provinceName + "&key=" + CarRentingListUtils.getApiKey();
         return endpoint;
     }
 

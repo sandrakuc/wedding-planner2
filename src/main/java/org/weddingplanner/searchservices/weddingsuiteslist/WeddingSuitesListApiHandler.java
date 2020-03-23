@@ -21,7 +21,7 @@ import java.util.List;
 
 public class WeddingSuitesListApiHandler {
     public String getEndpoint(String cityName) throws IOException {
-        String endpoint = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=salon+sukni+ślubnych+" + cityName + "&key=" + WeddingSuitesListUtils.getApiKey();
+        String endpoint = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=garnitury+" + cityName + "&key=" + WeddingSuitesListUtils.getApiKey();
         return endpoint;
     }
 

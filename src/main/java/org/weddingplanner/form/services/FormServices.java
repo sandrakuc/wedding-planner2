@@ -15,6 +15,8 @@ import org.weddingplanner.form.provinces.model.ProvinceEntityToProvinceModelConv
 import org.weddingplanner.form.provinces.model.ProvinceModel;
 import org.weddingplanner.form.weddingservicesfilter.WeddingServicesFilter;
 import org.weddingplanner.form.weddingservicesfilter.WeddingServicesWrapper;
+import org.weddingplanner.form.weddingservicesset.WeddingServicesSet;
+import org.weddingplanner.form.weddingservicesset.WeddingServicesSetSelector;
 import org.weddingplanner.form.weddingvenues.Church;
 import org.weddingplanner.form.weddingvenues.ChurchDao;
 import org.weddingplanner.form.weddingvenues.RegistryOffice;
@@ -95,8 +97,8 @@ public class FormServices {
     }
 
     @PostMapping(path = "/get-results", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public WeddingServicesWrapper getResults(@RequestBody InputDataForm inputDataForm) throws IOException {
-        WeddingServicesWrapper wrapper = WeddingServicesFilter.buildServicesWrapper(inputDataForm);
-        return wrapper;
+    public List<WeddingServicesSet> getResults(@RequestBody InputDataForm inputDataForm) throws IOException {
+        List<WeddingServicesSet> weddingServicesSets = WeddingServicesSetSelector.createServicesSetByDesertIslandRule(inputDataForm);
+        return weddingServicesSets;
     }
 }

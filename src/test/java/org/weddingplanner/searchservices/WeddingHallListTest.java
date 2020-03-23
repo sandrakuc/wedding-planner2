@@ -26,7 +26,7 @@ public class WeddingHallListTest {
         Assert.assertNotNull(internalModels);
         Assert.assertTrue(internalModels.size() > 0);
         for(WeddingHallListInternalModel internalModel : internalModels){
-            Assert.assertTrue(internalModel.getAvgPrice() >= 100 && internalModel.getAvgPrice() <= 300);
+            Assert.assertTrue(internalModel.getAvgPrice() >= (100 * form.getGuestQuantity()) && internalModel.getAvgPrice() <= (300 * form.getGuestQuantity()));
             Assert.assertTrue(internalModel.getMaxGuestsQuantity() >= 80 && internalModel.getMaxGuestsQuantity() <= 300);
             Assert.assertTrue(internalModel.getDistanceFromWeddingVenue() > 0);
         }

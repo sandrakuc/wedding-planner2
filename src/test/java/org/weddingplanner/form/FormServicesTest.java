@@ -11,6 +11,7 @@ import org.weddingplanner.form.model.*;
 import org.weddingplanner.form.provinces.model.ProvinceModel;
 import org.weddingplanner.form.weddingservicesfilter.WeddingServicesFilter;
 import org.weddingplanner.form.weddingservicesfilter.WeddingServicesWrapper;
+import org.weddingplanner.form.weddingservicesset.WeddingServicesSet;
 import org.weddingplanner.form.weddingvenues.model.WeddingVenueModel;
 import org.weddingplanner.searchservices.DistanceClassification;
 import org.weddingplanner.searchservices.PriceClassification;
@@ -25,6 +26,8 @@ import org.weddingplanner.searchservices.photographerlist.internal.PhotographerL
 import org.weddingplanner.searchservices.weddingdressstoreslist.internal.WeddingDressStoreListInternalModel;
 import org.weddingplanner.searchservices.weddinghalllist.internal.WeddingHallListInternalModel;
 import org.weddingplanner.searchservices.weddingsuiteslist.internal.WeddingSuitesListInternalModel;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -151,79 +154,13 @@ public class FormServicesTest extends AbstractTest{
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
-        WeddingServicesWrapper wrapper = super.mapFromJson(content, WeddingServicesWrapper.class);
-        assertTrue(wrapper.getBeautySalons().size() > 0);
-        assertTrue(wrapper.getCarRentings().size() > 0);
-        assertTrue(wrapper.getFloristicServices().size() > 0);
-        assertTrue(wrapper.getHairDressers().size() > 0);
-        assertTrue(wrapper.getMakeUpSalons().size() > 0);
-        assertTrue(wrapper.getMusicBands().size() > 0);
-        assertTrue(wrapper.getPhotographers().size() > 0);
-        assertTrue(wrapper.getWeddingDressStores().size() > 0);
-        assertTrue(wrapper.getWeddingSuitesStores().size() > 0);
-        assertTrue(wrapper.getWeddingHalls().size() > 0);
-        for(BeautySalonListInternalModel beautySalon : wrapper.getBeautySalons()){
-            assertTrue(beautySalon.getPriceClassification() != null);
-            assertTrue(beautySalon.getSatisfactionClassification() != null);
-            assertFalse(beautySalon.getPriceClassification().equals(PriceClassification.EXPENSIVE)
-                    && beautySalon.getSatisfactionClassification().equals(SatisfactionClassification.BAD));
-        }
-        for(CarRentingListInternalModel carRenting : wrapper.getCarRentings()){
-            assertTrue(carRenting.getPriceClassification() != null);
-            assertTrue(carRenting.getSatisfactionClassification() != null);
-            assertFalse(carRenting.getPriceClassification().equals(PriceClassification.EXPENSIVE)
-                    && carRenting.getSatisfactionClassification().equals(SatisfactionClassification.BAD));
-        }
-        for(FloristicServicesListInternalModel floristicService : wrapper.getFloristicServices()){
-            assertTrue(floristicService.getPriceClassification() != null);
-            assertTrue(floristicService.getSatisfactionClassification() != null);
-            assertFalse(floristicService.getPriceClassification().equals(PriceClassification.EXPENSIVE)
-                    && floristicService.getSatisfactionClassification().equals(SatisfactionClassification.BAD));
-        }
-        for(HairDresserListInternalModel hairDresser : wrapper.getHairDressers()){
-            assertTrue(hairDresser.getPriceClassification() != null);
-            assertTrue(hairDresser.getSatisfactionClassification() != null);
-            assertFalse(hairDresser.getPriceClassification().equals(PriceClassification.EXPENSIVE)
-                    && hairDresser.getSatisfactionClassification().equals(SatisfactionClassification.BAD));
-        }
-        for(MakeUpSalonListInternalModel salon : wrapper.getMakeUpSalons()){
-            assertTrue(salon.getPriceClassification() != null);
-            assertTrue(salon.getSatisfactionClassification() != null);
-            assertFalse(salon.getPriceClassification().equals(PriceClassification.EXPENSIVE)
-                    && salon.getSatisfactionClassification().equals(SatisfactionClassification.BAD));
-        }
-        for(MusicBandListInternalModel band : wrapper.getMusicBands()){
-            assertTrue(band.getPriceClassification() != null);
-            assertTrue(band.getSatisfactionClassification() != null);
-            assertFalse(band.getPriceClassification().equals(PriceClassification.EXPENSIVE)
-                    && band.getSatisfactionClassification().equals(SatisfactionClassification.BAD));
-        }
-        for(PhotographerListInternalModel photographer : wrapper.getPhotographers()){
-            assertTrue(photographer.getPriceClassification() != null);
-            assertTrue(photographer.getSatisfactionClassification() != null);
-            assertFalse(photographer.getPriceClassification().equals(PriceClassification.EXPENSIVE)
-                    && photographer.getSatisfactionClassification().equals(SatisfactionClassification.BAD));
-        }
-        for(WeddingDressStoreListInternalModel store : wrapper.getWeddingDressStores()){
-            assertTrue(store.getPriceClassification() != null);
-            assertTrue(store.getSatisfactionClassification() != null);
-            assertFalse(store.getPriceClassification().equals(PriceClassification.EXPENSIVE)
-                    && store.getSatisfactionClassification().equals(SatisfactionClassification.BAD));
-        }
-        for(WeddingSuitesListInternalModel store : wrapper.getWeddingSuitesStores()){
-            assertTrue(store.getPriceClassification() != null);
-            assertTrue(store.getSatisfactionClassification() != null);
-            assertFalse(store.getPriceClassification().equals(PriceClassification.EXPENSIVE)
-                    && store.getSatisfactionClassification().equals(SatisfactionClassification.BAD));
-        }
-        for(WeddingHallListInternalModel hall : wrapper.getWeddingHalls()){
-            assertTrue(hall.getMaxGuestsQuantity() >= form.getGuestQuantity());
-            assertTrue(hall.getDistanceClassification() != null);
-            assertTrue(hall.getPriceClassification() != null);
-            assertTrue(hall.getSatisfactionClassification() != null);
-            assertFalse(hall.getPriceClassification().equals(PriceClassification.EXPENSIVE)
-                    && hall.getSatisfactionClassification().equals(SatisfactionClassification.BAD)
-                    && hall.getDistanceClassification().equals(DistanceClassification.FAR));
+        WeddingServicesSet[] weddingServicesSets = super.mapFromJson(content, WeddingServicesSet[].class);
+        assertTrue(weddingServicesSets.length > 0);
+        for(int i = 0; i < weddingServicesSets.length; i++){
+            assertTrue(weddingServicesSets[i].getTotalAmount() <= (form.getBudget() + form.getBudgetMargin()));
+            if(i != weddingServicesSets.length - 1) {
+                assertTrue(weddingServicesSets[i].getTotalPoints() > weddingServicesSets[i + 1].getTotalPoints());
+            }
         }
     }
 }

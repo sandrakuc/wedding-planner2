@@ -19,7 +19,7 @@ import org.weddingplanner.searchservices.weddingsuiteslist.internal.WeddingSuite
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class WeddingServicesSet {
+public class WeddingServicesSet implements Comparable<WeddingServicesSet>{
 
     private BeautySalonListInternalModel beautySalon;
 
@@ -43,15 +43,36 @@ public class WeddingServicesSet {
 
     private int totalPoints;
 
+    private int totalAmount;
+
+    public int getTotalPoints(){
+        return beautySalon.getPoints()
+                + carRenting.getPoints()
+                + floristicService.getPoints()
+                + hairDresser.getPoints()
+                + makeUpSalon.getPoints()
+                + musicBand.getPoints()
+                + photographer.getPoints()
+                + dressStore.getPoints()
+                + suiteStore.getPoints()
+                + hall.getPoints();
+    };
+
     public int getTotalAmount(){
         return beautySalon.getAvgPrice()
                 + carRenting.getAvgPrice()
                 + floristicService.getAvgPrice()
                 + hairDresser.getAvgPrice()
                 + makeUpSalon.getAvgPrice()
+                + musicBand.getAvgPrice()
                 + photographer.getAvgPrice()
                 + dressStore.getAvgPrice()
                 + suiteStore.getAvgPrice()
                 + hall.getAvgPrice();
+    }
+
+    @Override
+    public int compareTo(WeddingServicesSet o) {
+        return Integer.compare(this.getTotalPoints(), o.getTotalPoints());
     }
 }

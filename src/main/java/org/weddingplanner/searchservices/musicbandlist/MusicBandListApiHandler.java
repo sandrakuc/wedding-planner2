@@ -21,7 +21,7 @@ import java.util.List;
 
 public class MusicBandListApiHandler {
     public String getEndpoint(String provinceName) throws IOException {
-        String endpoint = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=makijaż+" + provinceName + "&key=" + MusicBandListUtils.getApiKey();
+        String endpoint = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=zespół+muzyczny+" + provinceName + "&key=" + MusicBandListUtils.getApiKey();
         return endpoint;
     }
 
