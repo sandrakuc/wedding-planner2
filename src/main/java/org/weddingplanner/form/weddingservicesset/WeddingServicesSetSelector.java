@@ -1,10 +1,12 @@
 package org.weddingplanner.form.weddingservicesset;
 
+import org.weddingplanner.form.companies.CompanyDao;
 import org.weddingplanner.form.model.InputDataForm;
 import org.weddingplanner.form.weddingservicesfilter.WeddingServicesFilter;
 import org.weddingplanner.form.weddingservicesfilter.WeddingServicesWrapper;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -28,8 +30,8 @@ public class WeddingServicesSetSelector {
         return servicesListSizes[0];
     }
 
-    public static List<WeddingServicesSet> createServicesSetByDesertIslandRule(InputDataForm inputDataForm) throws IOException {
-        WeddingServicesWrapper wrapper = WeddingServicesFilter.buildServicesWrapper(inputDataForm);
+    public static List<WeddingServicesSet> createServicesSetByDesertIslandRule(InputDataForm inputDataForm, CompanyDao companyDao) throws IOException, SQLException {
+        WeddingServicesWrapper wrapper = WeddingServicesFilter.buildServicesWrapper(inputDataForm, companyDao);
         int minimalNumberOfSets = findMinimalNumberOfSets(wrapper);
         List<WeddingServicesSet> weddingServicesSets = new ArrayList<>();
         for(int i = 0; i < minimalNumberOfSets; i++){

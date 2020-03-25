@@ -1,6 +1,7 @@
 package org.weddingplanner.searchservices.carrentinglist;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.weddingplanner.form.companies.CompanyDao;
 import org.weddingplanner.form.model.InputDataForm;
 import org.weddingplanner.searchservices.carrentinglist.external.CarRentingListExternalModel;
 import org.weddingplanner.searchservices.carrentinglist.external.CarRentingListResultsResponse;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 
 public class CarRentingListApiHandler {
@@ -43,9 +45,9 @@ public class CarRentingListApiHandler {
         return response.getResults();
     }
 
-    public List<CarRentingListInternalModel> getCarRentingList(InputDataForm inputDataForm) throws IOException {
+    public List<CarRentingListInternalModel> getCarRentingList(InputDataForm inputDataForm, CompanyDao companyDao) throws IOException, SQLException {
         CarRentingListResultsResponse[] externalModels = sendRequest(inputDataForm.getWeddingVenueProvince());
-        List<CarRentingListInternalModel> internalModels = CarRentingListExternalToInternalModelConverter.convertList(externalModels);
+        List<CarRentingListInternalModel> internalModels = CarRentingListExternalToInternalModelConverter.convertList(externalModels, companyDao, inputDataForm.getWeddingVenueCity());
         return internalModels;
     }
 }

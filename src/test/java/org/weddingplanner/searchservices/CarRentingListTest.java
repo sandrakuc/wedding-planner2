@@ -2,6 +2,8 @@ package org.weddingplanner.searchservices;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.weddingplanner.form.companies.CompanyDao;
+import org.weddingplanner.form.companies.CompanyDaoImpl;
 import org.weddingplanner.form.model.InputDataForm;
 import org.weddingplanner.searchservices.beautysalonlist.BeautySalonListApiHandler;
 import org.weddingplanner.searchservices.beautysalonlist.internal.BeautySalonListInternalModel;
@@ -9,12 +11,13 @@ import org.weddingplanner.searchservices.carrentinglist.CarRentingListApiHandler
 import org.weddingplanner.searchservices.carrentinglist.internal.CarRentingListInternalModel;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class CarRentingListTest {
 
     @Test
-    public void getCarRentingListTest() throws IOException {
+    public void getCarRentingListTest() throws IOException, SQLException {
         InputDataForm form = new InputDataForm()
                 .builder()
                 .weddingVenueStreet("Pl. Panny Marii")
@@ -25,8 +28,9 @@ public class CarRentingListTest {
                 .brideLivingCity("Skorzeszyce")
                 .brideLivingProvince("świętokrzyskie")
                 .build();
+        CompanyDao companyDao = new CompanyDaoImpl();
         CarRentingListApiHandler apiHandler = new CarRentingListApiHandler();
-        List<CarRentingListInternalModel> internalModelList = apiHandler.getCarRentingList(form);
+        List<CarRentingListInternalModel> internalModelList = apiHandler.getCarRentingList(form, companyDao);
         Assert.assertNotNull(internalModelList);
         Assert.assertTrue(internalModelList.size() > 0);
         for(CarRentingListInternalModel internalModel : internalModelList){

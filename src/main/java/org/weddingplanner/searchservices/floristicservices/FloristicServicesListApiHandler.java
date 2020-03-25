@@ -1,6 +1,7 @@
 package org.weddingplanner.searchservices.floristicservices;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.weddingplanner.form.companies.CompanyDao;
 import org.weddingplanner.form.model.InputDataForm;
 import org.weddingplanner.searchservices.floristicservices.external.FloristicServicesListExternalModel;
 import org.weddingplanner.searchservices.floristicservices.external.FloristicServicesListResultsResponse;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 
 public class FloristicServicesListApiHandler {
@@ -38,9 +40,9 @@ public class FloristicServicesListApiHandler {
         return response.getResults();
     }
 
-    public List<FloristicServicesListInternalModel> getFloristicServicesList(InputDataForm inputDataForm) throws IOException {
+    public List<FloristicServicesListInternalModel> getFloristicServicesList(InputDataForm inputDataForm, CompanyDao companyDao) throws IOException, SQLException {
         FloristicServicesListResultsResponse[] externalModels = sendRequest(inputDataForm.getWeddingVenueCity());
-        List<FloristicServicesListInternalModel> internalModels = FloristicServicesListExternalToInternalModelConverter.convertList(externalModels);
+        List<FloristicServicesListInternalModel> internalModels = FloristicServicesListExternalToInternalModelConverter.convertList(externalModels, companyDao, inputDataForm.getWeddingVenueCity());
         return internalModels;
     }
 }

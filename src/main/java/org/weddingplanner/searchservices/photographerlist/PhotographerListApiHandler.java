@@ -1,6 +1,7 @@
 package org.weddingplanner.searchservices.photographerlist;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.weddingplanner.form.companies.CompanyDao;
 import org.weddingplanner.form.model.InputDataForm;
 import org.weddingplanner.searchservices.musicbandlist.MusicBandListUtils;
 import org.weddingplanner.searchservices.musicbandlist.external.MusicBandListExternalModel;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 
 public class PhotographerListApiHandler {
@@ -43,9 +45,9 @@ public class PhotographerListApiHandler {
         return response.getResults();
     }
 
-    public List<PhotographerListInternalModel> getPhotographerList(InputDataForm inputDataForm) throws IOException {
+    public List<PhotographerListInternalModel> getPhotographerList(InputDataForm inputDataForm, CompanyDao companyDao) throws IOException, SQLException {
         PhotographerListResultsResponse[] externalModels = sendRequest(inputDataForm.getWeddingVenueCity());
-        List<PhotographerListInternalModel> internalModels = PhotographerListExternalToInternalModelConverter.convertList(externalModels);
+        List<PhotographerListInternalModel> internalModels = PhotographerListExternalToInternalModelConverter.convertList(externalModels, companyDao, inputDataForm.getWeddingVenueCity());
         return internalModels;
     }
 }

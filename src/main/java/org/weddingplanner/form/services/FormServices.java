@@ -8,6 +8,7 @@ import org.weddingplanner.form.cities.City;
 import org.weddingplanner.form.cities.CityDao;
 import org.weddingplanner.form.cities.model.CityEntityToCityModelConverter;
 import org.weddingplanner.form.cities.model.CityModel;
+import org.weddingplanner.form.companies.CompanyDao;
 import org.weddingplanner.form.model.InputDataForm;
 import org.weddingplanner.form.provinces.Province;
 import org.weddingplanner.form.provinces.ProvinceDao;
@@ -45,6 +46,9 @@ public class FormServices {
 
     @Autowired
     RegistryOfficeDao registryOfficeDao;
+
+    @Autowired
+    CompanyDao companyDao;
 
     private List<ProvinceModel> getProvinceModels(List<Province> provinces){
         ProvinceEntityToProvinceModelConverter converter = new ProvinceEntityToProvinceModelConverter();
@@ -97,8 +101,8 @@ public class FormServices {
     }
 
     @PostMapping(path = "/get-results", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<WeddingServicesSet> getResults(@RequestBody InputDataForm inputDataForm) throws IOException {
-        List<WeddingServicesSet> weddingServicesSets = WeddingServicesSetSelector.createServicesSetByDesertIslandRule(inputDataForm);
+    public List<WeddingServicesSet> getResults(@RequestBody InputDataForm inputDataForm) throws IOException, SQLException {
+        List<WeddingServicesSet> weddingServicesSets = WeddingServicesSetSelector.createServicesSetByDesertIslandRule(inputDataForm, companyDao);
         return weddingServicesSets;
     }
 }

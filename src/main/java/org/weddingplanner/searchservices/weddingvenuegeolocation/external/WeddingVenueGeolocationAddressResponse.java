@@ -20,5 +20,6 @@ public class WeddingVenueGeolocationAddressResponse {
     public String Street;
     public String PostalCode;
     public String HouseNumber;
+    public String Subdistrict;
     public WeddingVenueGeolocationAdditionalDataResponse[] AdditionalData;
 }

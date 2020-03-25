@@ -2,6 +2,8 @@ package org.weddingplanner.searchservices;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.weddingplanner.form.companies.CompanyDao;
+import org.weddingplanner.form.companies.CompanyDaoImpl;
 import org.weddingplanner.form.model.InputDataForm;
 import org.weddingplanner.searchservices.musicbandlist.MusicBandListApiHandler;
 import org.weddingplanner.searchservices.musicbandlist.internal.MusicBandListInternalModel;
@@ -9,12 +11,13 @@ import org.weddingplanner.searchservices.photographerlist.PhotographerListApiHan
 import org.weddingplanner.searchservices.photographerlist.internal.PhotographerListInternalModel;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class PhotographerListTest {
 
     @Test
-    public void getPhotographerListTest() throws IOException {
+    public void getPhotographerListTest() throws IOException, SQLException {
         InputDataForm form = new InputDataForm()
                 .builder()
                 .weddingVenueStreet("Pl. Panny Marii")
@@ -24,8 +27,9 @@ public class PhotographerListTest {
                 .weddingVenueProvince("świętokrzyskie")
                 .brideLivingCity("Skorzeszyce")
                 .build();
+        CompanyDao companyDao = new CompanyDaoImpl();
         PhotographerListApiHandler apiHandler = new PhotographerListApiHandler();
-        List<PhotographerListInternalModel> internalModelList = apiHandler.getPhotographerList(form);
+        List<PhotographerListInternalModel> internalModelList = apiHandler.getPhotographerList(form, companyDao);
         Assert.assertNotNull(internalModelList);
         Assert.assertTrue(internalModelList.size() > 0);
         for(PhotographerListInternalModel internalModel : internalModelList){
