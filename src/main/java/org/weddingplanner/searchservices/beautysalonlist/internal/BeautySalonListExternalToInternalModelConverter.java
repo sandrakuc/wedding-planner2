@@ -3,8 +3,6 @@ package org.weddingplanner.searchservices.beautysalonlist.internal;
 import org.weddingplanner.form.companies.Company;
 import org.weddingplanner.form.companies.CompanyDao;
 import org.weddingplanner.searchservices.beautysalonlist.external.BeautySalonListResultsResponse;
-import org.weddingplanner.searchservices.hairdresserlist.external.HairDresserListResultsResponse;
-import org.weddingplanner.searchservices.hairdresserlist.internal.HairDresserListInternalModel;
 import org.weddingplanner.utils.CommonUtils;
 
 import java.sql.SQLException;
@@ -13,6 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 public class BeautySalonListExternalToInternalModelConverter {
+
     private static int getPrice(){
         Random rd = new Random();
         int randomMultiplicand = rd.nextInt(11) + 10;
@@ -30,6 +29,8 @@ public class BeautySalonListExternalToInternalModelConverter {
         internalModel.setRating(externalModel.getRating());
         internalModel.setImage(company == null ? CommonUtils.PHOTOS_BS[index] : company.getImage());
         internalModel.setWebsite(company == null ? CommonUtils.BEAUTY_SALON_WEBSITE : company.getWebsite());
+        internalModel.setEmail(CommonUtils.BEAUTY_SALON_EMAIL);
+        internalModel.setPhoneNumber(CommonUtils.generatePhoneNumber());
         return internalModel;
     }
 

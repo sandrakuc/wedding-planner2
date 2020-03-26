@@ -3,11 +3,6 @@ package org.weddingplanner.searchservices.makeupsalonlist;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.weddingplanner.form.companies.CompanyDao;
 import org.weddingplanner.form.model.InputDataForm;
-import org.weddingplanner.searchservices.hairdresserlist.HairDresserListUtils;
-import org.weddingplanner.searchservices.hairdresserlist.external.HairDresserListExternalModel;
-import org.weddingplanner.searchservices.hairdresserlist.external.HairDresserListResultsResponse;
-import org.weddingplanner.searchservices.hairdresserlist.internal.HairDresserListExternalToInternalModelConverter;
-import org.weddingplanner.searchservices.hairdresserlist.internal.HairDresserListInternalModel;
 import org.weddingplanner.searchservices.makeupsalonlist.external.MakeUpSalonListExternalModel;
 import org.weddingplanner.searchservices.makeupsalonlist.external.MakeUpSalonListResultsResponse;
 import org.weddingplanner.searchservices.makeupsalonlist.internal.MakeUpSalonListExternalToInternalModelConverter;
@@ -22,6 +17,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class MakeUpSalonListApiHandler {
+
     public String getEndpoint(String cityName) throws IOException {
         String endpoint = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=makijaż+" + cityName + "&key=" + MakeUpSalonListUtils.getApiKey();
         return endpoint;

@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 public class WeddingDressStoreListExternalToInternalModelConverter {
+
     private static int getPrice(){
         Random rd = new Random();
         int randomMultiplicand = rd.nextInt(9) + 2;
@@ -28,6 +29,8 @@ public class WeddingDressStoreListExternalToInternalModelConverter {
         internalModel.setImage(company == null ? CommonUtils.PHOTO_WD[index] : company.getImage());
         internalModel.setWebsite(company == null ? CommonUtils.WEDDING_DRESS_WEBSITE : company.getWebsite());
         internalModel.setRating(externalModel.getRating());
+        internalModel.setEmail(CommonUtils.WEDDING_DRESS_EMAIL);
+        internalModel.setPhoneNumber(CommonUtils.generatePhoneNumber());
         return internalModel;
     }
 

@@ -1,6 +1,5 @@
 package org.weddingplanner.utils;
 
-import org.weddingplanner.form.weddingservicesset.WeddingServicesSet;
 import org.weddingplanner.searchservices.beautysalonlist.internal.BeautySalonListInternalModel;
 import org.weddingplanner.searchservices.carrentinglist.internal.CarRentingListInternalModel;
 import org.weddingplanner.searchservices.floristicservices.internal.FloristicServicesListInternalModel;
@@ -12,7 +11,18 @@ import org.weddingplanner.searchservices.weddingdressstoreslist.internal.Wedding
 import org.weddingplanner.searchservices.weddinghalllist.internal.WeddingHallListInternalModel;
 import org.weddingplanner.searchservices.weddingsuiteslist.internal.WeddingSuitesListInternalModel;
 
+import java.util.Random;
+
 public class CommonUtils {
+
+    public static String generatePhoneNumber(){
+        String phoneNumber = "+48";
+        Random random = new Random();
+        for(int i = 0; i < 9; i++){
+            phoneNumber += String.valueOf(random.nextInt(10));
+        }
+        return phoneNumber;
+    }
 
     public static final String BEAUTY_SALON_MODEL_CLASS_NAME = new BeautySalonListInternalModel().getClass().getName();
     public static final String CAR_RENTING_MODEL_CLASS_NAME = new CarRentingListInternalModel().getClass().getName();
@@ -35,6 +45,17 @@ public class CommonUtils {
     public static final String WEDDING_SUITE_WEBSITE = "https://www.suite-store.lorem-ipsum.pl";
     public static final String WEDDING_DRESS_WEBSITE = "https://www.dress-store.lorem-ipsum.pl";
     public static final String WEDDING_HALL_WEBSITE = "https://www.wedding-hall.lorem-ipsum.pl";
+
+    public static final String BEAUTY_SALON_EMAIL = "beauty-salon@lorem-ipsum.pl";
+    public static final String CAR_RENTING_EMAIL = "car-renting@lorem-ipsum.pl";
+    public static final String FLORIST_EMAIL = "florist@lorem-ipsum.pl";
+    public static final String HAIR_DRESSER_EMAIL = "hair-stylist@lorem-ipsum.pl";
+    public static final String MAKE_UP_EMAIL = "make-up-salon@lorem-ipsum.pl";
+    public static final String MUSIC_BAND_EMAIL = "music-band@lorem-ipsum.pl";
+    public static final String PHOTOGRAPHER_EMAIL = "photographer@lorem-ipsum.pl";
+    public static final String WEDDING_SUITE_EMAIL = "suite-store@lorem-ipsum.pl";
+    public static final String WEDDING_DRESS_EMAIL = "dress-store@lorem-ipsum.pl";
+    public static final String WEDDING_HALL_EMAIL = "wedding-hall@lorem-ipsum.pl";
 
     public static final String[] PHOTOS_BS = {
             "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",

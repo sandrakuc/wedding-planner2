@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class MakeUpSalonListUtils {
+
     private MakeUpSalonListUtils() throws Exception {
         throw new Exception(String.format("Sorry, there is no %s instance for you!", this.getClass()));
     }

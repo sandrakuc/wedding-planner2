@@ -1,8 +1,6 @@
 package org.weddingplanner.form.cities;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.weddingplanner.form.provinces.Province;
-import org.weddingplanner.form.provinces.ProvinceDao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

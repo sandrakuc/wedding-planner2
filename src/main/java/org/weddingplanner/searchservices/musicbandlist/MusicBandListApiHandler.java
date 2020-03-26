@@ -3,11 +3,6 @@ package org.weddingplanner.searchservices.musicbandlist;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.weddingplanner.form.companies.CompanyDao;
 import org.weddingplanner.form.model.InputDataForm;
-import org.weddingplanner.searchservices.makeupsalonlist.MakeUpSalonListUtils;
-import org.weddingplanner.searchservices.makeupsalonlist.external.MakeUpSalonListExternalModel;
-import org.weddingplanner.searchservices.makeupsalonlist.external.MakeUpSalonListResultsResponse;
-import org.weddingplanner.searchservices.makeupsalonlist.internal.MakeUpSalonListExternalToInternalModelConverter;
-import org.weddingplanner.searchservices.makeupsalonlist.internal.MakeUpSalonListInternalModel;
 import org.weddingplanner.searchservices.musicbandlist.external.MusicBandListExternalModel;
 import org.weddingplanner.searchservices.musicbandlist.external.MusicBandListResultsResponse;
 import org.weddingplanner.searchservices.musicbandlist.internal.MusicBandListExternalToInternalModelConverter;
@@ -22,6 +17,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class MusicBandListApiHandler {
+
     public String getEndpoint(String provinceName) throws IOException {
         String endpoint = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=zespół+muzyczny+" + provinceName + "&key=" + MusicBandListUtils.getApiKey();
         return endpoint;

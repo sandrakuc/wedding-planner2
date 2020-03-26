@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class FloristicServicesListUtils {
+
     private FloristicServicesListUtils() throws Exception {
         throw new Exception(String.format("Sorry, there is no %s instance for you!", this.getClass()));
     }

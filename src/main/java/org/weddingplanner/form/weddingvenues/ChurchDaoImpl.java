@@ -1,7 +1,6 @@
 package org.weddingplanner.form.weddingvenues;
 
 import org.springframework.stereotype.Repository;
-import org.weddingplanner.form.cities.City;
 import org.weddingplanner.utils.DaoUtils;
 
 import javax.transaction.Transactional;

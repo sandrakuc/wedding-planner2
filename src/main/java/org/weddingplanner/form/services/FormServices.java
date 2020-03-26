@@ -1,6 +1,5 @@
 package org.weddingplanner.form.services;
 
-import jdk.nashorn.internal.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +13,6 @@ import org.weddingplanner.form.provinces.Province;
 import org.weddingplanner.form.provinces.ProvinceDao;
 import org.weddingplanner.form.provinces.model.ProvinceEntityToProvinceModelConverter;
 import org.weddingplanner.form.provinces.model.ProvinceModel;
-import org.weddingplanner.form.weddingservicesfilter.WeddingServicesFilter;
-import org.weddingplanner.form.weddingservicesfilter.WeddingServicesWrapper;
 import org.weddingplanner.form.weddingservicesset.WeddingServicesSet;
 import org.weddingplanner.form.weddingservicesset.WeddingServicesSetSelector;
 import org.weddingplanner.form.weddingvenues.Church;

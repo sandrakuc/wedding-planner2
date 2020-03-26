@@ -3,11 +3,6 @@ package org.weddingplanner.searchservices.photographerlist;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.weddingplanner.form.companies.CompanyDao;
 import org.weddingplanner.form.model.InputDataForm;
-import org.weddingplanner.searchservices.musicbandlist.MusicBandListUtils;
-import org.weddingplanner.searchservices.musicbandlist.external.MusicBandListExternalModel;
-import org.weddingplanner.searchservices.musicbandlist.external.MusicBandListResultsResponse;
-import org.weddingplanner.searchservices.musicbandlist.internal.MusicBandListExternalToInternalModelConverter;
-import org.weddingplanner.searchservices.musicbandlist.internal.MusicBandListInternalModel;
 import org.weddingplanner.searchservices.photographerlist.external.PhotographerListExternalModel;
 import org.weddingplanner.searchservices.photographerlist.external.PhotographerListResultsResponse;
 import org.weddingplanner.searchservices.photographerlist.internal.PhotographerListExternalToInternalModelConverter;
@@ -22,6 +17,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class PhotographerListApiHandler {
+
     public String getEndpoint(String cityName) throws IOException {
         String endpoint = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=fotograf+" + cityName + "&key=" + PhotographerListUtils.getApiKey();
         return endpoint;

@@ -2,8 +2,6 @@ package org.weddingplanner.searchservices.weddingsuiteslist.internal;
 
 import org.weddingplanner.form.companies.Company;
 import org.weddingplanner.form.companies.CompanyDao;
-import org.weddingplanner.searchservices.weddingdressstoreslist.external.WeddingDressStoreListResultsResponse;
-import org.weddingplanner.searchservices.weddingdressstoreslist.internal.WeddingDressStoreListInternalModel;
 import org.weddingplanner.searchservices.weddingsuiteslist.external.WeddingSuitesListResultsResponse;
 import org.weddingplanner.utils.CommonUtils;
 
@@ -31,6 +29,8 @@ public class WeddingSuitesStoreListExternalToInternalModelConverter {
         internalModel.setAvgPrice(company == null || company.getPrice() < 100 ? getPrice() : company.getPrice());
         internalModel.setImage(company == null ? CommonUtils.PHOTO_WS[index] : company.getImage());
         internalModel.setWebsite(company == null ? CommonUtils.WEDDING_SUITE_WEBSITE : company.getWebsite());
+        internalModel.setEmail(CommonUtils.WEDDING_SUITE_EMAIL);
+        internalModel.setPhoneNumber(CommonUtils.generatePhoneNumber());
         return internalModel;
     }
 

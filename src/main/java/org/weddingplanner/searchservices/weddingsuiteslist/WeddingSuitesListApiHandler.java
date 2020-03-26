@@ -1,14 +1,8 @@
 package org.weddingplanner.searchservices.weddingsuiteslist;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.weddingplanner.form.companies.Company;
 import org.weddingplanner.form.companies.CompanyDao;
 import org.weddingplanner.form.model.InputDataForm;
-import org.weddingplanner.searchservices.weddingdressstoreslist.WeddingDressStoreListUtils;
-import org.weddingplanner.searchservices.weddingdressstoreslist.external.WeddingDressStoreListExternalModel;
-import org.weddingplanner.searchservices.weddingdressstoreslist.external.WeddingDressStoreListResultsResponse;
-import org.weddingplanner.searchservices.weddingdressstoreslist.internal.WeddingDressStoreListExternalToInternalModelConverter;
-import org.weddingplanner.searchservices.weddingdressstoreslist.internal.WeddingDressStoreListInternalModel;
 import org.weddingplanner.searchservices.weddingsuiteslist.external.WeddingSuitesListExternalModel;
 import org.weddingplanner.searchservices.weddingsuiteslist.external.WeddingSuitesListResultsResponse;
 import org.weddingplanner.searchservices.weddingsuiteslist.internal.WeddingSuitesListInternalModel;
@@ -23,6 +17,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class WeddingSuitesListApiHandler {
+
     public String getEndpoint(String cityName) throws IOException {
         String endpoint = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=garnitury+" + cityName + "&key=" + WeddingSuitesListUtils.getApiKey();
         return endpoint;

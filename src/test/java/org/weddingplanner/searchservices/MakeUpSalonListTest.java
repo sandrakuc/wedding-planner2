@@ -2,12 +2,9 @@ package org.weddingplanner.searchservices;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.weddingplanner.form.companies.Company;
 import org.weddingplanner.form.companies.CompanyDao;
 import org.weddingplanner.form.companies.CompanyDaoImpl;
 import org.weddingplanner.form.model.InputDataForm;
-import org.weddingplanner.searchservices.hairdresserlist.HairDresserListApiHandler;
-import org.weddingplanner.searchservices.hairdresserlist.internal.HairDresserListInternalModel;
 import org.weddingplanner.searchservices.makeupsalonlist.MakeUpSalonListApiHandler;
 import org.weddingplanner.searchservices.makeupsalonlist.internal.MakeUpSalonListInternalModel;
 

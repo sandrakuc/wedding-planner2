@@ -12,7 +12,6 @@ import java.util.List;
 public class ProvinceDaoImpl implements ProvinceDao {
 
     private static final String GET_PROVINCES_QUERY = "SELECT * FROM \"Province\"";
-    private static final String GET_PROVINCE_QUERY = "SELECT * FROM \"Province\" WHERE \"Id\" = ?";
 
     private List<Province> getConvertedProvinces(ResultSet resultSet) throws SQLException {
         ResultSetToProvinceListConverter converter = new ResultSetToProvinceListConverter();

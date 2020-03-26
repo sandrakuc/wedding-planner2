@@ -29,6 +29,10 @@ public class ServiceInternalModel implements Comparable<ServiceInternalModel>{
 
     public String image;
 
+    public String phoneNumber;
+
+    public String email;
+
     @Override
     public int compareTo(ServiceInternalModel o) {
         return Integer.compare(this.getPoints(), o.getPoints());

@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class WeddingHallListApiHandler {
+
     private String getEndpoint(String cityName) throws IOException {
         String endpoint = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=sale+weselne+" + cityName + "&key=" + WeddingHallListUtils.getApiKey();
         return endpoint;

@@ -1,13 +1,9 @@
 package org.weddingplanner.form.weddingservicesfilter;
 
-import org.apache.logging.log4j.util.PropertySource;
-import org.weddingplanner.form.model.InputDataForm;
 import org.weddingplanner.searchservices.DistanceClassification;
 import org.weddingplanner.searchservices.PriceClassification;
 import org.weddingplanner.searchservices.SatisfactionClassification;
 import org.weddingplanner.searchservices.ServiceInternalModel;
-import org.weddingplanner.searchservices.beautysalonlist.internal.BeautySalonListInternalModel;
-import org.weddingplanner.searchservices.carrentinglist.internal.CarRentingListInternalModel;
 import org.weddingplanner.searchservices.weddinghalllist.internal.WeddingHallListInternalModel;
 
 import java.util.ArrayList;
@@ -22,8 +18,6 @@ public class ServiceGrouping <T extends ServiceInternalModel>{
     private static final int[][] otherWeightMatrix = {{0,1}, {0,1}};
     private static final int[] hallsAttractor = {1,1,1};
     private static final int[] otherAttractor = {1,1};
-    private static final int[] hallsAntiAttractor = {-1,-1,-1};
-    private static final int[] otherAntiAttractor = {-1,-1};
 
     private List<T> sortByPrice(List<T> serviceInternalModels){
         List<T> newServiceInternalModels = serviceInternalModels.stream().collect(Collectors.toList());;

@@ -3,8 +3,6 @@ package org.weddingplanner.searchservices.carrentinglist.internal;
 import org.weddingplanner.form.companies.Company;
 import org.weddingplanner.form.companies.CompanyDao;
 import org.weddingplanner.searchservices.carrentinglist.external.CarRentingListResultsResponse;
-import org.weddingplanner.searchservices.musicbandlist.external.MusicBandListResultsResponse;
-import org.weddingplanner.searchservices.musicbandlist.internal.MusicBandListInternalModel;
 import org.weddingplanner.utils.CommonUtils;
 
 import java.sql.SQLException;
@@ -13,6 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 public class CarRentingListExternalToInternalModelConverter {
+
     private static int getPrice(){
         Random rd = new Random();
         int randomMultiplicand = rd.nextInt(15) + 5;
@@ -30,6 +29,8 @@ public class CarRentingListExternalToInternalModelConverter {
         internalModel.setImage(company == null ? CommonUtils.PHOTO_CARS[index] : company.getImage());
         internalModel.setWebsite(company == null ? CommonUtils.CAR_RENTING_WEBSITE : company.getWebsite());
         internalModel.setRating(externalModel.getRating());
+        internalModel.setEmail(CommonUtils.CAR_RENTING_EMAIL);
+        internalModel.setPhoneNumber(CommonUtils.generatePhoneNumber());
         return internalModel;
     }
 

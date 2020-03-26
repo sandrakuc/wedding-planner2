@@ -5,7 +5,6 @@ import org.weddingplanner.form.companies.CompanyDao;
 import org.weddingplanner.form.model.InputDataForm;
 import org.weddingplanner.searchservices.weddinghalllist.external.WeddingHallListResultsResponse;
 import org.weddingplanner.searchservices.weddingvenuegeolocation.WeddingVenueGeolocationApiHandler;
-import org.weddingplanner.searchservices.weddingvenuegeolocation.internal.WeddingVenueGeolocationExternalToInternalModelConverter;
 import org.weddingplanner.searchservices.weddingvenuegeolocation.internal.WeddingVenueGeolocationInternalModel;
 import org.weddingplanner.searchservices.weddingvenueweddinghalldistance.WeddingVenueWeddingHallDistanceApiHandler;
 import org.weddingplanner.utils.CommonUtils;
@@ -17,10 +16,6 @@ import java.util.List;
 import java.util.Random;
 
 public class WeddingHallListExternalModelToInternalModelConverter {
-
-    private WeddingHallListExternalModelToInternalModelConverter() throws Exception {
-        throw new Exception(String.format("Sorry, there is no %s instance for you!", this.getClass()));
-    }
 
     private static int getPrice(InputDataForm form){
         Random rd = new Random();
@@ -50,6 +45,8 @@ public class WeddingHallListExternalModelToInternalModelConverter {
         weddingHallListInternalModel.setWebsite(company == null ? CommonUtils.WEDDING_HALL_WEBSITE : company.getWebsite());
         weddingHallListInternalModel.setMaxGuestsQuantity(company == null || company.getGuests() == 0 ? getMaxGuestsQuantity() : company.getGuests());
         weddingHallListInternalModel.setDistanceFromWeddingVenue(apiHandler.getDistance(geolocationInternalModel.getLatitude(), geolocationInternalModel.getLongitude(), String.valueOf(externalModel.getGeometry().getLocation().getLat()), String.valueOf(externalModel.getGeometry().getLocation().getLng())));
+        weddingHallListInternalModel.setEmail(CommonUtils.WEDDING_HALL_EMAIL);
+        weddingHallListInternalModel.setPhoneNumber(CommonUtils.generatePhoneNumber());
         return weddingHallListInternalModel;
     }
 

@@ -5,8 +5,6 @@ import org.junit.Test;
 import org.weddingplanner.form.companies.CompanyDao;
 import org.weddingplanner.form.companies.CompanyDaoImpl;
 import org.weddingplanner.form.model.InputDataForm;
-import org.weddingplanner.searchservices.weddingdressstoreslist.WeddingDressStoreListApiHandler;
-import org.weddingplanner.searchservices.weddingdressstoreslist.internal.WeddingDressStoreListInternalModel;
 import org.weddingplanner.searchservices.weddingsuiteslist.WeddingSuitesListApiHandler;
 import org.weddingplanner.searchservices.weddingsuiteslist.internal.WeddingSuitesListInternalModel;
 

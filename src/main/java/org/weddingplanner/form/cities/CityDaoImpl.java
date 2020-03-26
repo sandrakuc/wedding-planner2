@@ -1,8 +1,6 @@
 package org.weddingplanner.form.cities;
 
 import org.springframework.stereotype.Repository;
-import org.weddingplanner.form.provinces.ProvinceDao;
-import org.weddingplanner.form.provinces.ResultSetToProvinceListConverter;
 import org.weddingplanner.utils.DaoUtils;
 
 import javax.transaction.Transactional;

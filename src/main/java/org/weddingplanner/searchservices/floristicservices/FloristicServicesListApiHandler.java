@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class FloristicServicesListApiHandler {
+
     public String getEndpoint(String cityName) throws IOException {
         String endpoint = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=kwiaciarnia+" + cityName + "&key=" + FloristicServicesListUtils.getApiKey();
         return endpoint;

@@ -7,11 +7,6 @@ import org.weddingplanner.searchservices.beautysalonlist.external.BeautySalonLis
 import org.weddingplanner.searchservices.beautysalonlist.external.BeautySalonListResultsResponse;
 import org.weddingplanner.searchservices.beautysalonlist.internal.BeautySalonListExternalToInternalModelConverter;
 import org.weddingplanner.searchservices.beautysalonlist.internal.BeautySalonListInternalModel;
-import org.weddingplanner.searchservices.hairdresserlist.HairDresserListUtils;
-import org.weddingplanner.searchservices.hairdresserlist.external.HairDresserListExternalModel;
-import org.weddingplanner.searchservices.hairdresserlist.external.HairDresserListResultsResponse;
-import org.weddingplanner.searchservices.hairdresserlist.internal.HairDresserListExternalToInternalModelConverter;
-import org.weddingplanner.searchservices.hairdresserlist.internal.HairDresserListInternalModel;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,6 +17,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class BeautySalonListApiHandler {
+
     public String getEndpoint(String provinceName) throws IOException {
         String endpoint = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=gabinet+kosmetyczny+" + provinceName + "&key=" + BeautySalonListUtils.getApiKey();
         return endpoint;

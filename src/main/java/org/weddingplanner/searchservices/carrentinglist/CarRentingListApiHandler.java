@@ -7,11 +7,6 @@ import org.weddingplanner.searchservices.carrentinglist.external.CarRentingListE
 import org.weddingplanner.searchservices.carrentinglist.external.CarRentingListResultsResponse;
 import org.weddingplanner.searchservices.carrentinglist.internal.CarRentingListExternalToInternalModelConverter;
 import org.weddingplanner.searchservices.carrentinglist.internal.CarRentingListInternalModel;
-import org.weddingplanner.searchservices.musicbandlist.MusicBandListUtils;
-import org.weddingplanner.searchservices.musicbandlist.external.MusicBandListExternalModel;
-import org.weddingplanner.searchservices.musicbandlist.external.MusicBandListResultsResponse;
-import org.weddingplanner.searchservices.musicbandlist.internal.MusicBandListExternalToInternalModelConverter;
-import org.weddingplanner.searchservices.musicbandlist.internal.MusicBandListInternalModel;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,6 +17,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class CarRentingListApiHandler {
+
     public String getEndpoint(String provinceName) throws IOException {
         String endpoint = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=wynajem+samochodów+" + provinceName + "&key=" + CarRentingListUtils.getApiKey();
         return endpoint;

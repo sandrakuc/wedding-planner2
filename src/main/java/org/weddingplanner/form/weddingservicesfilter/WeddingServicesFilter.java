@@ -1,6 +1,5 @@
 package org.weddingplanner.form.weddingservicesfilter;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import org.weddingplanner.form.companies.CompanyDao;
 import org.weddingplanner.form.model.InputDataForm;
 import org.weddingplanner.searchservices.beautysalonlist.BeautySalonListApiHandler;

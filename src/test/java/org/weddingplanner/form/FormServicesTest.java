@@ -9,25 +9,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.weddingplanner.form.cities.model.CityModel;
 import org.weddingplanner.form.model.*;
 import org.weddingplanner.form.provinces.model.ProvinceModel;
-import org.weddingplanner.form.weddingservicesfilter.WeddingServicesFilter;
-import org.weddingplanner.form.weddingservicesfilter.WeddingServicesWrapper;
 import org.weddingplanner.form.weddingservicesset.WeddingServicesSet;
 import org.weddingplanner.form.weddingvenues.model.WeddingVenueModel;
-import org.weddingplanner.searchservices.DistanceClassification;
-import org.weddingplanner.searchservices.PriceClassification;
-import org.weddingplanner.searchservices.SatisfactionClassification;
-import org.weddingplanner.searchservices.beautysalonlist.internal.BeautySalonListInternalModel;
-import org.weddingplanner.searchservices.carrentinglist.internal.CarRentingListInternalModel;
-import org.weddingplanner.searchservices.floristicservices.internal.FloristicServicesListInternalModel;
-import org.weddingplanner.searchservices.hairdresserlist.internal.HairDresserListInternalModel;
-import org.weddingplanner.searchservices.makeupsalonlist.internal.MakeUpSalonListInternalModel;
-import org.weddingplanner.searchservices.musicbandlist.internal.MusicBandListInternalModel;
-import org.weddingplanner.searchservices.photographerlist.internal.PhotographerListInternalModel;
-import org.weddingplanner.searchservices.weddingdressstoreslist.internal.WeddingDressStoreListInternalModel;
-import org.weddingplanner.searchservices.weddinghalllist.internal.WeddingHallListInternalModel;
-import org.weddingplanner.searchservices.weddingsuiteslist.internal.WeddingSuitesListInternalModel;
-
-import java.util.List;
 
 import static org.junit.Assert.*;
 

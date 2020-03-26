@@ -3,14 +3,12 @@ package org.weddingplanner.searchservices.weddingvenuegeolocation;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.weddingplanner.form.model.InputDataForm;
 import org.weddingplanner.searchservices.weddingvenuegeolocation.external.WeddingVenueGeolocationExternalModel;
-import org.weddingplanner.searchservices.weddingvenuegeolocation.external.WeddingVenueGeolocationPositionResponse;
 import org.weddingplanner.searchservices.weddingvenuegeolocation.external.WeddingVenueGeolocationResponse;
 import org.weddingplanner.searchservices.weddingvenuegeolocation.internal.WeddingVenueGeolocationExternalToInternalModelConverter;
 import org.weddingplanner.searchservices.weddingvenuegeolocation.internal.WeddingVenueGeolocationInternalModel;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;

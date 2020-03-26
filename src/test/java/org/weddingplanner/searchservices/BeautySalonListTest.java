@@ -7,8 +7,6 @@ import org.weddingplanner.form.companies.CompanyDaoImpl;
 import org.weddingplanner.form.model.InputDataForm;
 import org.weddingplanner.searchservices.beautysalonlist.BeautySalonListApiHandler;
 import org.weddingplanner.searchservices.beautysalonlist.internal.BeautySalonListInternalModel;
-import org.weddingplanner.searchservices.hairdresserlist.HairDresserListApiHandler;
-import org.weddingplanner.searchservices.hairdresserlist.internal.HairDresserListInternalModel;
 
 import java.io.IOException;
 import java.sql.SQLException;

@@ -2,8 +2,6 @@ package org.weddingplanner.searchservices.musicbandlist.internal;
 
 import org.weddingplanner.form.companies.Company;
 import org.weddingplanner.form.companies.CompanyDao;
-import org.weddingplanner.searchservices.makeupsalonlist.external.MakeUpSalonListResultsResponse;
-import org.weddingplanner.searchservices.makeupsalonlist.internal.MakeUpSalonListInternalModel;
 import org.weddingplanner.searchservices.musicbandlist.external.MusicBandListResultsResponse;
 import org.weddingplanner.utils.CommonUtils;
 
@@ -13,6 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 public class MusicBandListExternalToInternalModelConverter {
+
     private static int getPrice(){
         Random rd = new Random();
         int randomMultiplicand = rd.nextInt(9) + 4;
@@ -30,6 +29,8 @@ public class MusicBandListExternalToInternalModelConverter {
         internalModel.setImage(company == null ? CommonUtils.PHOTO_MB[index] : company.getImage());
         internalModel.setWebsite(company == null ? CommonUtils.MUSIC_BAND_WEBSITE : company.getWebsite());
         internalModel.setRating(externalModel.getRating());
+        internalModel.setEmail(CommonUtils.MUSIC_BAND_EMAIL);
+        internalModel.setPhoneNumber(CommonUtils.generatePhoneNumber());
         return internalModel;
     }
 

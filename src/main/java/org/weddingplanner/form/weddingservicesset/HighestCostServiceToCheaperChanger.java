@@ -2,8 +2,6 @@ package org.weddingplanner.form.weddingservicesset;
 
 import org.weddingplanner.form.model.InputDataForm;
 import org.weddingplanner.form.weddingservicesfilter.WeddingServicesWrapper;
-import org.weddingplanner.searchservices.PriceClassification;
-import org.weddingplanner.searchservices.ServiceInternalModel;
 import org.weddingplanner.searchservices.beautysalonlist.internal.BeautySalonListInternalModel;
 import org.weddingplanner.searchservices.carrentinglist.internal.CarRentingListInternalModel;
 import org.weddingplanner.searchservices.floristicservices.internal.FloristicServicesListInternalModel;

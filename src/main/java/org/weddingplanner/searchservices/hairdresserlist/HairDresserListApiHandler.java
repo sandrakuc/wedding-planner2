@@ -7,11 +7,6 @@ import org.weddingplanner.searchservices.hairdresserlist.external.HairDresserLis
 import org.weddingplanner.searchservices.hairdresserlist.external.HairDresserListResultsResponse;
 import org.weddingplanner.searchservices.hairdresserlist.internal.HairDresserListExternalToInternalModelConverter;
 import org.weddingplanner.searchservices.hairdresserlist.internal.HairDresserListInternalModel;
-import org.weddingplanner.searchservices.weddingdressstoreslist.WeddingDressStoreListUtils;
-import org.weddingplanner.searchservices.weddingdressstoreslist.external.WeddingDressStoreListExternalModel;
-import org.weddingplanner.searchservices.weddingdressstoreslist.external.WeddingDressStoreListResultsResponse;
-import org.weddingplanner.searchservices.weddingdressstoreslist.internal.WeddingDressStoreListExternalToInternalModelConverter;
-import org.weddingplanner.searchservices.weddingdressstoreslist.internal.WeddingDressStoreListInternalModel;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,6 +17,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class HairDresserListApiHandler {
+
     public String getEndpoint(String cityName) throws IOException {
         String endpoint = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=salon+fryzjerski+" + cityName + "&key=" + HairDresserListUtils.getApiKey();
         return endpoint;
