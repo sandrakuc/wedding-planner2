@@ -53,7 +53,7 @@ public class HighestCostServiceToCheaperChanger {
         return set;
     }
 
-    private static Boolean checkPriorityCriteria(String className, InputDataForm form){
+    private static boolean checkPriorityCriteria(String className, InputDataForm form){
         if(CommonUtils.WEDDING_DRESS_STORE_MODEL_CLASS_NAME.equals(className) || CommonUtils.WEDDING_SUITE_MODEL_MODEL_CLASS_NAME.equals(className)){
             return form.getWeddingOutfitCriteria().getPriceCriteria() > form.getWeddingOutfitCriteria().getNoteCriteria();
         } else if (CommonUtils.WEDDING_HALL_MODEL_MODEL_CLASS_NAME.equals(className)){
