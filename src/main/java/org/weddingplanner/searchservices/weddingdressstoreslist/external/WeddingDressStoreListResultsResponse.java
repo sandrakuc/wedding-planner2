@@ -26,6 +26,10 @@ public class WeddingDressStoreListResultsResponse {
 
     public WeddingDressStoreListOpeningHoursResponse opening_hours;
 
+    public String business_status;
+
+    public boolean permanently_closed;
+
     public String place_id;
 
     public double rating;

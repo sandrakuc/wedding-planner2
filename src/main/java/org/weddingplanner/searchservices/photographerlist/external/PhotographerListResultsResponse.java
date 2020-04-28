@@ -26,6 +26,10 @@ public class PhotographerListResultsResponse {
 
     public PhotographerListOpeningHoursResponse opening_hours;
 
+    public String business_status;
+
+    public boolean permanently_closed;
+
     public String place_id;
 
     public double rating;
